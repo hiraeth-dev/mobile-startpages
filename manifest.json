@@ -1,12 +1,19 @@
 {
-  "name": "home",
-  "short_name": "home",
-  "description": "mobile startpage",
-  "start_url": ".",
+  "name": "Aether Mobile Startpage",
+  "short_name": "Aether",
+  "description": "Tactile, ultra-fast, and distraction-free mobile startpage dashboard.",
+  "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#0a0714",
-  "theme_color": "#0a0714",
+  "orientation": "portrait",
+  "background_color": "#070709",
+  "theme_color": "#070709",
   "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
     {
       "src": "android-chrome-192x192.png",
       "sizes": "192x192",
