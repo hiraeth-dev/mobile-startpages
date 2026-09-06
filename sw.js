@@ -1,11 +1,14 @@
-const CACHE_NAME = 'aether-v1';
+const CACHE_NAME = 'hiraeth-mobile-v2';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
+  './grid.js',
   './app.js',
   './manifest.json',
-  './favicon.svg'
+  './favicon.svg',
+  './fonts/MapleMono-NF-Regular.woff2',
+  './fonts/MapleMono-NF-Bold.woff2'
 ];
 
 self.addEventListener('install', event => {

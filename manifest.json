@@ -1,12 +1,12 @@
 {
-  "name": "Aether Mobile Startpage",
-  "short_name": "Aether",
-  "description": "Tactile, ultra-fast, and distraction-free mobile startpage dashboard.",
+  "name": "hiraeth // startpage",
+  "short_name": "hiraeth",
+  "description": "Minimal, non-scrollable retro terminal startpage for mobile.",
   "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#070709",
-  "theme_color": "#070709",
+  "background_color": "#0c0406",
+  "theme_color": "#0c0406",
   "icons": [
     {
       "src": "favicon.svg",

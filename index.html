@@ -1,349 +1,146 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="oled">
+<html lang="en" data-theme="crimson">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <title>Aether Startpage</title>
+  <title>hiraeth // startpage</title>
   
-  <!-- PWA & Mobile Web Capabilities -->
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#000000">
+  <meta name="theme-color" content="#0c0406">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Aether">
   <meta name="format-detection" content="telephone=no">
 
-  <!-- Preconnect & Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="fonts/MapleMono-NF-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/MapleMono-NF-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Ambient Atmospheric Glow Mesh -->
-  <div class="ambient-mesh" aria-hidden="true">
-    <div class="ambient-blob blob-1"></div>
-    <div class="ambient-blob blob-2"></div>
-    <div class="ambient-blob blob-3"></div>
-  </div>
+  <!-- Interactive Spring Dot Grid Canvas -->
+  <canvas id="grid-canvas"></canvas>
 
-  <!-- Mobile Viewport Container -->
-  <div class="app-container">
+  <!-- Screen-Fitted 100dvh Non-Scrollable Frame -->
+  <div class="screen-wrapper">
     
-    <!-- Header: Status Bar & Minimalist Clock -->
-    <header class="header-card">
-      <div class="status-bar">
-        <div class="greeting-wrap">
-          <span class="live-indicator" aria-hidden="true"></span>
-          <span id="greetingText">Good day</span>
-        </div>
-        <div class="meta-chips">
-          <div class="meta-chip" id="weatherChip" title="Local Weather">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle></svg>
-            <span>--°C</span>
-          </div>
-          <div class="meta-chip" id="batteryChip" title="Battery Status">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="6" width="18" height="12" rx="2"></rect></svg>
-            <span>--%</span>
-          </div>
-        </div>
+    <!-- Top Navigation Bar -->
+    <nav class="top-bar">
+      <a href="https://hiraeth-dev.github.io" class="nav-brand">
+        <span class="bracket">[</span><span class="accent-char">h</span>iraeth.dev<span class="bracket">]</span>
+      </a>
+      <div class="nav-status">
+        <span class="live-dot"></span>
+        <span>sys.ready</span>
       </div>
-
-      <div class="clock-display" id="clockSection">
-        <div class="time-row">
-          <span class="time-digits" id="clockDigits">00:00</span>
-          <span class="time-period" id="clockPeriod"></span>
-        </div>
-        <div class="date-text" id="dateDisplay">Loading…</div>
-      </div>
-    </header>
-
-    <!-- Omni-Search Bar -->
-    <section class="search-wrapper" aria-label="Web Search">
-      <form class="search-form" id="searchForm" autocomplete="off">
-        <button type="button" class="engine-btn" id="engineToggleBtn" title="Switch Search Engine" aria-label="Switch Engine">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
-        </button>
-        <input 
-          type="text" 
-          class="search-input" 
-          id="searchInput" 
-          placeholder="Search the web or type URL…" 
-          autocapitalize="none" 
-          autocorrect="off" 
-          spellcheck="false"
-          enterkeyhint="search"
-        >
-        <button type="button" class="clear-btn" id="clearSearch" title="Clear input" aria-label="Clear">
-          <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-        <button type="submit" class="submit-btn" id="submitSearch" title="Search" aria-label="Search">
-          <svg viewBox="0 0 24 24" fill="none"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-        </button>
-      </form>
-
-      <!-- Quick Bang Chips -->
-      <div class="bang-chips-row" aria-label="Search Engine Bangs">
-        <button type="button" class="bang-chip" data-bang="!g">!g Google</button>
-        <button type="button" class="bang-chip" data-bang="!dd">!dd DuckDuckGo</button>
-        <button type="button" class="bang-chip" data-bang="!yt">!yt YouTube</button>
-        <button type="button" class="bang-chip" data-bang="!gh">!gh GitHub</button>
-        <button type="button" class="bang-chip" data-bang="!rd">!rd Reddit</button>
-        <button type="button" class="bang-chip" data-bang="!fmhy">!fmhy FMHY</button>
-        <button type="button" class="bang-chip" data-bang="!ani">!ani Miruro</button>
-      </div>
-    </section>
-
-    <!-- Category Filter Pills -->
-    <nav class="category-bar" aria-label="Shortcut Categories">
-      <button type="button" class="category-pill active" data-category="all">All</button>
-      <button type="button" class="category-pill" data-category="favs">Favorites</button>
-      <button type="button" class="category-pill" data-category="dev">Dev</button>
-      <button type="button" class="category-pill" data-category="media">Media</button>
-      <button type="button" class="category-pill" data-category="tools">Tools</button>
+      <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Cycle Theme">[crimson]</button>
     </nav>
 
-    <!-- Shortcuts Grid -->
-    <section class="shortcuts-section" aria-label="Shortcuts">
-      <div class="section-head">
-        <span class="section-title">Speed Dial</span>
-        <button type="button" class="edit-toggle-btn" id="editToggleBtn">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-          <span class="edit-text">Edit</span>
-        </button>
+    <!-- Retro 3D Terminal Window -->
+    <main class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-title">
+          <span>kabir@hiraeth:~</span> <i>(startpage)</i>
+        </div>
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-cyan"></span>
+        </div>
       </div>
-      <div class="shortcuts-grid" id="shortcutsGrid">
-        <!-- Rendered dynamically by app.js -->
-      </div>
-    </section>
 
-    <!-- Scratchpad / Quick Capture Drawer -->
-    <section class="notes-drawer" id="notesDrawer" aria-label="Quick Scratchpad">
-      <div class="notes-head">
-        <div class="notes-title">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
-          <span>Scratchpad / Quick Notes</span>
+      <div class="terminal-content">
+        <!-- Terminal Meta / Live Clock -->
+        <div class="terminal-meta-row">
+          <div class="terminal-clock" id="terminalClock">00<span class="colon">:</span>00</div>
+          <div class="terminal-date" id="terminalDate">LOADING…</div>
         </div>
-        <div class="notes-actions">
-          <button type="button" class="notes-action-btn" id="copyNotesBtn">Copy</button>
-          <button type="button" class="notes-action-btn" id="clearNotesBtn">Clear</button>
+
+        <!-- Terminal Search Bar -->
+        <div class="search-block">
+          <form class="dict-search-form" id="dictSearchForm" autocomplete="off">
+            <span class="dict-prompt">λ</span>
+            <div class="dict-input-wrap">
+              <input 
+                type="text" 
+                class="dict-input" 
+                id="dictInput" 
+                placeholder="search or enter url..." 
+                autocapitalize="none" 
+                autocorrect="off" 
+                spellcheck="false"
+                enterkeyhint="go"
+              >
+              <button type="button" class="dict-clear" id="dictClear" aria-label="Clear">×</button>
+            </div>
+            <button type="submit" class="dict-submit">[GO]</button>
+          </form>
+
+          <!-- Search Bang Pills -->
+          <div class="bang-bar" aria-label="Quick Bangs">
+            <button type="button" class="bang-pill" data-bang="!g">!g google</button>
+            <button type="button" class="bang-pill" data-bang="!dd">!dd duck</button>
+            <button type="button" class="bang-pill" data-bang="!yt">!yt youtube</button>
+            <button type="button" class="bang-pill" data-bang="!gh">!gh github</button>
+            <button type="button" class="bang-pill" data-bang="!rd">!rd reddit</button>
+            <button type="button" class="bang-pill" data-bang="!ani">!ani miruro</button>
+            <button type="button" class="bang-pill" data-bang="!fmhy">!fmhy</button>
+          </div>
+        </div>
+
+        <!-- Retro 3D Speed Dial Grid -->
+        <div class="shortcuts-panel">
+          <div class="shortcuts-heading">
+            <span class="sym">//</span> SPEED DIAL
+          </div>
+          <div class="shortcuts-grid" id="shortcutsGrid">
+            <!-- Populated dynamically by app.js -->
+          </div>
         </div>
       </div>
-      <textarea 
-        class="notes-textarea" 
-        id="notesTextarea" 
-        placeholder="Quick notes, thoughts, or scratchpad… (saved automatically)"
-        spellcheck="false"
-      ></textarea>
-      <div class="notes-footer">
-        <span id="notesCharCount">0 chars</span>
-        <span>Local & Private</span>
+    </main>
+
+    <!-- Bottom Status / Action Bar -->
+    <footer class="mobile-footer">
+      <div class="footer-actions">
+        <button type="button" class="footer-btn" id="footerEditBtn">[edit]</button>
+        <button type="button" class="footer-btn" id="footerAddBtn">[+ add]</button>
+        <button type="button" class="footer-btn" id="footerResetBtn">[reset]</button>
       </div>
-    </section>
+      <div class="footer-status">SYS_OK • 200</div>
+    </footer>
 
   </div>
 
-  <!-- Bottom Ergonomic Fixed Dock (Thumb Zone) -->
-  <nav class="dock-nav" aria-label="Quick Dock">
-    <div class="dock-bar">
-      <button type="button" class="dock-btn active" id="dockHomeBtn" title="Home" aria-label="Home">
-        <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-      </button>
-      <button type="button" class="dock-btn" id="dockNotesBtn" title="Scratchpad" aria-label="Scratchpad">
-        <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-      </button>
-      <button type="button" class="dock-btn" id="dockThemesBtn" title="Themes" aria-label="Themes">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a7 7 0 0 0 7 7c0 2-2 3-2 3s-1 1-1 2v1a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-1c0-1-1-2-1-2s-2-1-2-3a7 7 0 0 0 7-7z"></path></svg>
-      </button>
-      <button type="button" class="dock-btn" id="dockSettingsBtn" title="Settings" aria-label="Settings">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
-      </button>
-    </div>
-  </nav>
-
-  <!-- Add / Edit Shortcut Modal (Bottom Sheet) -->
+  <!-- Add/Edit Shortcut Terminal Modal -->
   <div class="modal-overlay" id="shortcutModal" aria-hidden="true">
-    <div class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="shortcutModalTitle">
-      <div class="sheet-handle"></div>
-      <div class="sheet-header">
-        <h2 class="sheet-title" id="shortcutModalTitle">Add Shortcut</h2>
-        <button type="button" class="sheet-close-btn" id="closeShortcutModal" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
+    <div class="modal-terminal" role="dialog" aria-modal="true">
+      <div class="terminal-header">
+        <div class="terminal-title" id="modalTitle">ADD SHORTCUT</div>
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-cyan"></span>
+        </div>
       </div>
-
-      <form class="sheet-form" id="shortcutForm">
-        <div class="form-group">
-          <label class="form-label" for="scNameInput">Title / Name</label>
-          <input type="text" class="form-input" id="scNameInput" placeholder="e.g. GitHub" required>
+      <form class="modal-form" id="modalForm">
+        <div class="form-field">
+          <label class="form-label" for="modalNameInput">LABEL / NAME</label>
+          <input type="text" class="form-input" id="modalNameInput" placeholder="e.g. github" required>
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="scUrlInput">URL Destination</label>
-          <input type="text" class="form-input" id="scUrlInput" placeholder="https://github.com" required>
+        <div class="form-field">
+          <label class="form-label" for="modalUrlInput">DESTINATION URL</label>
+          <input type="text" class="form-input" id="modalUrlInput" placeholder="https://github.com" required>
         </div>
-
-        <div class="form-group">
-          <label class="form-label" for="scCategorySelect">Category</label>
-          <select class="form-select" id="scCategorySelect">
-            <option value="favs">Favorites</option>
-            <option value="dev">Dev</option>
-            <option value="media">Media</option>
-            <option value="tools">Tools</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label" for="scIconSelect">Icon Emblem</label>
-          <select class="form-select" id="scIconSelect">
-            <option value="globe">Globe / Web</option>
-            <option value="github">GitHub</option>
-            <option value="hiraeth">Hiraeth Lightning</option>
-            <option value="x">X / Twitter</option>
-            <option value="youtube">YouTube</option>
-            <option value="reddit">Reddit</option>
-            <option value="miruro">Miruro Anime</option>
-            <option value="fmhy">FMHY Book</option>
-            <option value="hackernews">Hacker News (Y)</option>
-            <option value="claude">Claude Sparkle</option>
-            <option value="spotify">Spotify</option>
-            <option value="twitch">Twitch</option>
-            <option value="code">Terminal Code</option>
-          </select>
-        </div>
-
-        <div class="btn-row">
-          <button type="submit" class="btn-primary" id="saveShortcutBtn">Save Shortcut</button>
+        <div class="form-actions">
+          <button type="submit" class="modal-btn-submit">[SAVE]</button>
+          <button type="button" class="modal-btn-cancel" id="modalCancelBtn">[CANCEL]</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Theme Selector Modal (Bottom Sheet) -->
-  <div class="modal-overlay" id="themeModal" aria-hidden="true">
-    <div class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="themeModalTitle">
-      <div class="sheet-handle"></div>
-      <div class="sheet-header">
-        <h2 class="sheet-title" id="themeModalTitle">Color Theme</h2>
-        <button type="button" class="sheet-close-btn" id="closeThemeModal" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-
-      <div class="theme-selector-grid">
-        <div class="theme-card-option active" data-theme="oled">
-          <div class="theme-preview-dots">
-            <span class="theme-dot" style="background:#000000; border:1px solid #333"></span>
-            <span class="theme-dot" style="background:#38bdf8"></span>
-            <span class="theme-dot" style="background:#10b981"></span>
-          </div>
-          <span class="theme-name">OLED Noir</span>
-        </div>
-
-        <div class="theme-card-option" data-theme="cyber">
-          <div class="theme-preview-dots">
-            <span class="theme-dot" style="background:#070714"></span>
-            <span class="theme-dot" style="background:#a855f7"></span>
-            <span class="theme-dot" style="background:#06b6d4"></span>
-          </div>
-          <span class="theme-name">Cyberpunk Neon</span>
-        </div>
-
-        <div class="theme-card-option" data-theme="crimson">
-          <div class="theme-preview-dots">
-            <span class="theme-dot" style="background:#0c0406"></span>
-            <span class="theme-dot" style="background:#ff2a4b"></span>
-            <span class="theme-dot" style="background:#f59e0b"></span>
-          </div>
-          <span class="theme-name">Crimson Blood</span>
-        </div>
-
-        <div class="theme-card-option" data-theme="emerald">
-          <div class="theme-preview-dots">
-            <span class="theme-dot" style="background:#020b08"></span>
-            <span class="theme-dot" style="background:#10b981"></span>
-            <span class="theme-dot" style="background:#38bdf8"></span>
-          </div>
-          <span class="theme-name">Emerald Matrix</span>
-        </div>
-
-        <div class="theme-card-option" data-theme="parchment">
-          <div class="theme-preview-dots">
-            <span class="theme-dot" style="background:#f8f4ec; border:1px solid #ccc"></span>
-            <span class="theme-dot" style="background:#b45309"></span>
-            <span class="theme-dot" style="background:#0f766e"></span>
-          </div>
-          <span class="theme-name">Parchment Kraft</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Settings & Backup Modal (Bottom Sheet) -->
-  <div class="modal-overlay" id="settingsModal" aria-hidden="true">
-    <div class="bottom-sheet" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle">
-      <div class="sheet-handle"></div>
-      <div class="sheet-header">
-        <h2 class="sheet-title" id="settingsModalTitle">Preferences</h2>
-        <button type="button" class="sheet-close-btn" id="closeSettingsModal" aria-label="Close">
-          <svg viewBox="0 0 24 24" fill="none"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-        </button>
-      </div>
-
-      <div class="settings-list">
-        <div class="settings-item">
-          <div class="settings-label-wrap">
-            <span class="settings-item-title">Default Search Engine</span>
-            <span class="settings-item-desc">Used when submitting search</span>
-          </div>
-          <select class="form-select" id="defaultEngineSelect" style="width: auto; padding: 6px 12px;">
-            <option value="google">Google</option>
-            <option value="duckduckgo">DuckDuckGo</option>
-            <option value="startpage">Startpage</option>
-            <option value="youtube">YouTube</option>
-            <option value="reddit">Reddit</option>
-            <option value="github">GitHub</option>
-            <option value="fmhy">FMHY</option>
-            <option value="miruro">Miruro</option>
-            <option value="wikipedia">Wikipedia</option>
-          </select>
-        </div>
-
-        <div class="settings-item">
-          <div class="settings-label-wrap">
-            <span class="settings-item-title">24-Hour Military Time</span>
-            <span class="settings-item-desc">Toggle between 24h and 12h AM/PM</span>
-          </div>
-          <label class="switch">
-            <input type="checkbox" id="clock24Toggle" checked>
-            <span class="slider"></span>
-          </label>
-        </div>
-
-        <div class="settings-item">
-          <div class="settings-label-wrap">
-            <span class="settings-item-title">Backup & Restore</span>
-            <span class="settings-item-desc">Export or import your shortcuts</span>
-          </div>
-          <div style="display:flex; gap:6px;">
-            <button type="button" class="notes-action-btn" id="exportJsonBtn">Export</button>
-            <button type="button" class="notes-action-btn" id="importJsonBtn">Import</button>
-            <input type="file" id="importJsonInput" accept=".json" style="display:none">
-          </div>
-        </div>
-
-        <div class="settings-item">
-          <div class="settings-label-wrap">
-            <span class="settings-item-title">Reset to Defaults</span>
-            <span class="settings-item-desc">Restore curated default shortcuts</span>
-          </div>
-          <button type="button" class="notes-action-btn" id="resetDefaultsBtn" style="color:var(--danger)">Reset</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <script src="grid.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
