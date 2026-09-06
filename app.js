@@ -1,6 +1,6 @@
 /**
  * Minimal Mobile Startpage Controller
- * Cat Petting, Box Game & Time-of-Day Meter, Search & Themes
+ * Clean Cat Petting, Time-of-Day Boxes, Themes & Search
  */
 
 (function() {
@@ -69,7 +69,7 @@
   }
   applyTheme(currentTheme);
 
-  // ── Sleeping Cat Interaction ──
+  // ── Sleeping Cat Petting ──
   const catLogo = document.getElementById('catLogo');
   if (catLogo) {
     const HEARTS = ['♥', '✦', '🐾', 'zzZ', '★'];
@@ -99,151 +99,39 @@
     });
   }
 
-  // ── Spot-The-Error Box Game & Time-of-Day Mode ──
-  const purrMeter = document.getElementById('purrMeter');
-  const meterLabel = document.getElementById('meterLabel');
-  const meterScore = document.getElementById('meterScore');
+  // ── Time & Day Progress Boxes (12 Blocks = 2h each) ──
+  const timeText = document.getElementById('timeText');
+  const timeMeter = document.getElementById('timeMeter');
 
-  if (purrMeter) {
-    const meterBoxes = Array.from(purrMeter.querySelectorAll('i'));
-    const N = meterBoxes.length || 11;
-    const ROUND_SIZE = 7;
-    const HIT_SCORE = 10;
-
-    let mode = 'game'; // 'game' or 'time'
-    let score = 0;
-    let best = 0;
-    try { best = Number(localStorage.getItem('hiraeth_spot_best') || 0) || 0; } catch (e) {}
-    let targetIdx = -1;
-    let roundActive = false;
-    let roundTimer = null;
-    const ROUND_MS = 1500;
-
-    function pad4(n) {
-      return String(n).padStart(4, '0');
+  function updateTime() {
+    const now = new Date();
+    const hh = String(now.getHours()).padStart(2, '0');
+    const mm = String(now.getMinutes()).padStart(2, '0');
+    
+    if (timeText) {
+      timeText.innerHTML = `${hh}<span class="time-colon">:</span>${mm}`;
     }
 
-    function updateHud() {
-      if (mode === 'game') {
-        if (meterLabel) meterLabel.textContent = 'SPOT THE ERROR';
-        if (meterScore) meterScore.textContent = `SCORE ${pad4(score)} (BEST ${pad4(best)})`;
-      } else {
-        const now = new Date();
-        const hh = String(now.getHours()).padStart(2, '0');
-        const mm = String(now.getMinutes()).padStart(2, '0');
-        const pct = Math.round(((now.getHours() * 60 + now.getMinutes()) / 1440) * 100);
-        if (meterLabel) meterLabel.textContent = `TIME ${hh}:${mm}`;
-        if (meterScore) meterScore.textContent = `DAY ${pct}%`;
-      }
-    }
-
-    function shuffledIndices() {
-      const idx = Array.from({ length: N }, (_, i) => i);
-      for (let i = idx.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [idx[i], idx[j]] = [idx[j], idx[i]];
-      }
-      return idx;
-    }
-
-    function newRound() {
-      if (mode !== 'game') return;
-      meterBoxes.forEach(box => {
-        box.className = '';
-      });
-      const picks = shuffledIndices().slice(0, ROUND_SIZE);
-      targetIdx = picks[Math.floor(Math.random() * picks.length)];
-      picks.forEach(i => {
-        if (i === targetIdx) {
-          meterBoxes[i].classList.add('g-error');
-        } else {
-          meterBoxes[i].classList.add(Math.random() < 0.5 ? 'g-primary' : 'g-secondary');
-        }
-      });
-      roundActive = true;
-      clearTimeout(roundTimer);
-      roundTimer = setTimeout(() => {
-        if (!roundActive || mode !== 'game') return;
-        score = 0;
-        updateHud();
-        newRound();
-      }, ROUND_MS);
-    }
-
-    function renderTimeOfDay() {
-      if (mode !== 'time') return;
-      clearTimeout(roundTimer);
-      roundActive = false;
-      const now = new Date();
+    if (timeMeter) {
+      const boxes = timeMeter.querySelectorAll('i');
       const totalMinutes = now.getHours() * 60 + now.getMinutes();
-      const litCount = Math.round((totalMinutes / 1440) * N);
+      // 1440 min / 12 boxes = 120 min (2 hours per box)
+      const litCount = Math.floor(totalMinutes / 120);
+      const currentIdx = Math.min(litCount, boxes.length - 1);
 
-      meterBoxes.forEach((box, idx) => {
+      boxes.forEach((box, idx) => {
         box.className = '';
         if (idx < litCount) {
-          box.classList.add('hour-lit');
-        }
-      });
-      updateHud();
-    }
-
-    // Clicking boxes
-    meterBoxes.forEach((box, i) => {
-      box.addEventListener('click', () => {
-        if (mode === 'time') {
-          // Tap anywhere to switch back into game mode!
-          haptic(15);
-          mode = 'game';
-          updateHud();
-          newRound();
-          return;
-        }
-
-        if (!roundActive) return;
-        if (i === targetIdx) {
-          // Success hit
-          haptic(25);
-          roundActive = false;
-          clearTimeout(roundTimer);
-          score += HIT_SCORE;
-          if (score > best) {
-            best = score;
-            try { localStorage.setItem('hiraeth_spot_best', String(best)); } catch (e) {}
-          }
-          box.classList.remove('g-error');
-          box.classList.add('g-win');
-          updateHud();
-          setTimeout(newRound, 400);
-        } else if (box.classList.contains('g-primary') || box.classList.contains('g-secondary')) {
-          // Miss
-          haptic(40);
-          score = 0;
-          updateHud();
-          box.classList.remove('g-miss');
-          void box.offsetWidth;
-          box.classList.add('g-miss');
-        }
-      });
-    });
-
-    // Toggle mode by tapping the HUD label
-    if (meterLabel) {
-      meterLabel.addEventListener('click', () => {
-        haptic(15);
-        if (mode === 'game') {
-          mode = 'time';
-          renderTimeOfDay();
-        } else {
-          mode = 'game';
-          updateHud();
-          newRound();
+          box.classList.add('lit');
+        } else if (idx === currentIdx) {
+          box.classList.add('active-now');
         }
       });
     }
-
-    updateHud();
-    newRound();
   }
+
+  updateTime();
+  setInterval(updateTime, 1000);
 
   // ── Search & Bang Engine ──
   const bangs = {

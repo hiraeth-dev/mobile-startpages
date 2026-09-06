@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
    Hiraeth Minimal Mobile Startpage
-   100% Screen Fitted • Zero Scroll • Sleeping Cat & Box Game
+   100% Screen Fitted • Zero Scroll • Top Cat & Time • Crimson Default
    ══════════════════════════════════════════════════════════════ */
 
 @font-face {
@@ -243,13 +243,14 @@ html, body {
   z-index: 1;
   width: 100%;
   height: 100dvh;
-  max-width: 420px;
+  max-width: 400px;
   margin: 0 auto;
-  padding: max(14px, env(safe-area-inset-top)) 18px max(14px, env(safe-area-inset-bottom)) 18px;
+  padding: max(12px, env(safe-area-inset-top)) 18px max(14px, env(safe-area-inset-bottom)) 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+  gap: 12px;
 }
 
 /* ── Top Header Bar ── */
@@ -295,27 +296,37 @@ html, body {
   box-shadow: 0 0 0 var(--accent);
 }
 
-/* ── Cat Logo & Sleeping Kitty ── */
-.cat-stage {
+/* ── Top Section: Cat + Time + Meter (Positioned at Top) ── */
+.top-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  flex: 1;
-  min-height: 0;
   gap: 8px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Sleeping Kitty (Scaled Cleanly) */
+.cat-wrap {
+  position: relative;
+  width: 140px;
+  height: 116px;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .cat-logo {
   position: relative;
   width: 182px;
   height: 154px;
-  margin: 0 auto;
   cursor: pointer;
   user-select: none;
   overflow: visible;
   transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: scale(0.88);
+  transform: scale(0.75);
+  transform-origin: center center;
 }
 
 .cat-logo i {
@@ -470,10 +481,10 @@ html, body {
 }
 
 @keyframes petSquish {
-  0% { transform: scale(0.88) translateY(-3px); }
-  30% { transform: scale(0.95, 0.82) translateY(2px); }
-  60% { transform: scale(0.84, 0.92) translateY(-4px); }
-  100% { transform: scale(0.88) translateY(0); }
+  0% { transform: scale(0.75) translateY(-3px); }
+  30% { transform: scale(0.82, 0.70) translateY(2px); }
+  60% { transform: scale(0.72, 0.78) translateY(-4px); }
+  100% { transform: scale(0.75) translateY(0); }
 }
 
 .pet-heart {
@@ -492,131 +503,83 @@ html, body {
   100% { opacity: 0; transform: translate(-10px, -35px) scale(0.9); }
 }
 
-/* ── Box Game / Time-of-Day Meter ── */
-.meter-stage {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  width: 100%;
-}
-
-.meter-hud {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  max-width: 280px;
-  font-size: 0.68rem;
+/* Minimal Time Display (No "TIME" label) */
+.time-text {
+  font-size: 2.2rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: var(--fg-dim);
-}
-
-.meter-hud .hud-label {
-  cursor: pointer;
-  color: var(--accent);
-  transition: opacity 0.12s ease;
-}
-
-.meter-hud .hud-label:active {
-  opacity: 0.6;
-}
-
-.meter-hud .hud-score {
-  font-family: var(--font-mono);
   color: var(--fg);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  margin-top: -4px;
 }
 
-.meter {
+.time-colon {
+  color: var(--accent);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0.25; }
+}
+
+/* Time of Day Box Meter */
+.time-meter {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  user-select: none;
+  gap: 5px;
+  margin-top: 2px;
 }
 
-.meter i {
-  width: 18px;
-  height: 18px;
+.time-meter i {
+  width: 16px;
+  height: 16px;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   box-shadow: 2px 2px 0 var(--border);
-  cursor: pointer;
   display: inline-block;
-  transition: background 0.12s ease, transform 0.12s ease, border-color 0.12s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.meter i:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0 0 0 var(--border);
-}
-
-.meter i.g-primary {
-  background: var(--accent) !important;
+.time-meter i.lit {
+  background: var(--accent);
   border-color: var(--accent-bright);
 }
 
-.meter i.g-secondary {
-  background: var(--border-strong) !important;
+.time-meter i.active-now {
+  background: var(--bg-panel-alt);
   border-color: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  animation: pulseBox 2s infinite ease-in-out;
 }
 
-.meter i.g-error {
-  background: var(--accent-soft) !important;
-  border-color: #ffffff;
-}
-
-.meter i.g-win {
-  background: #ffffff !important;
-  border-color: var(--accent);
-  animation: gameWin 0.4s ease-out;
-}
-
-@keyframes gameWin {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.28); }
-  100% { transform: scale(1); }
-}
-
-.meter i.g-miss {
-  animation: gameMiss 0.3s ease;
-}
-
-@keyframes gameMiss {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-3px); }
-  75% { transform: translateX(3px); }
-}
-
-/* Time of Day / Hour indicator */
-.meter i.hour-lit {
-  background: var(--accent) !important;
-  border-color: var(--accent-bright);
-  box-shadow: 2px 2px 0 var(--accent-bright);
+@keyframes pulseBox {
+  0%, 100% { transform: scale(1); border-color: var(--accent); }
+  50% { transform: scale(1.12); border-color: var(--accent-bright); }
 }
 
 /* ── 4 Minimal Shortcuts (2x2 Grid) ── */
 .shortcuts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
+  gap: 10px;
   width: 100%;
   flex-shrink: 0;
+  margin: 4px 0;
 }
 
 .shortcut {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 12px;
+  padding: 12px 14px;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0 var(--border);
   color: var(--fg);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, color 0.12s ease;
@@ -629,14 +592,14 @@ html, body {
 }
 
 .shortcut-num {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   color: var(--accent);
   opacity: 0.9;
 }
 
 .shortcut-arrow {
   color: var(--fg-muted);
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   transition: transform 0.15s ease, color 0.15s ease;
 }
 
@@ -659,34 +622,34 @@ html, body {
   border-color: var(--accent);
 }
 
-/* ── Minimal Search Form ── */
+/* ── Minimal Search Form (Bottom) ── */
 .search-form {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   flex-shrink: 0;
-  margin-top: 4px;
+  margin-top: 2px;
 }
 
 .search-prompt {
   position: absolute;
-  left: 12px;
+  left: 14px;
   color: var(--accent);
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1rem;
   pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 11px 36px 11px 30px;
+  padding: 13px 40px 13px 34px;
   background: var(--bg-panel-alt);
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0 var(--border);
   color: var(--fg);
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   outline: none;
   transition: border-color 0.12s ease, box-shadow 0.12s ease;
   user-select: text;
@@ -704,11 +667,11 @@ html, body {
 
 .search-clear {
   position: absolute;
-  right: 10px;
+  right: 12px;
   background: transparent;
   border: none;
   color: var(--fg-muted);
-  font-size: 1rem;
+  font-size: 1.1rem;
   cursor: pointer;
   display: none;
   padding: 4px;
@@ -724,7 +687,8 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shortcut, .search-input, .theme-btn, .cat-logo {
+  .shortcut, .search-input, .theme-btn, .cat-logo, .time-meter i {
     transition: none !important;
+    animation: none !important;
   }
 }

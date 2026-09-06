@@ -15,7 +15,7 @@
 
   <link rel="preload" href="fonts/MapleMono-NF-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/MapleMono-NF-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <!-- Interactive Spring Dot Grid Canvas -->
@@ -28,33 +28,33 @@
       <button type="button" class="theme-btn" id="themeBtn" title="Switch Theme">crimson</button>
     </header>
 
-    <!-- Sleeping Cat & Interactive Box Game -->
-    <section class="cat-stage">
-      <div class="cat-logo" id="catLogo" aria-hidden="true" title="Pet the kitty!">
-        <i class="cat-tail"></i>
-        <i class="cat-body"></i>
-        <i class="cat-paw cat-paw-one"></i>
-        <i class="cat-paw cat-paw-two"></i>
-        <i class="cat-head"></i>
-        <i class="cat-ear cat-ear-left"></i>
-        <i class="cat-ear cat-ear-right"></i>
-        <i class="cat-face"></i>
-        <i class="cat-nose"></i>
-        <i class="cat-whiskers"></i>
-        <b class="cat-z cat-z-one">Z</b>
-        <b class="cat-z cat-z-two">Z</b>
-        <b class="cat-z cat-z-three">Z</b>
-        <b class="cat-z cat-z-four">Z</b>
+    <!-- Top Part: Cat and Time -->
+    <section class="top-section">
+      <div class="cat-wrap">
+        <div class="cat-logo" id="catLogo" aria-hidden="true" title="Pet the kitty!">
+          <i class="cat-tail"></i>
+          <i class="cat-body"></i>
+          <i class="cat-paw cat-paw-one"></i>
+          <i class="cat-paw cat-paw-two"></i>
+          <i class="cat-head"></i>
+          <i class="cat-ear cat-ear-left"></i>
+          <i class="cat-ear cat-ear-right"></i>
+          <i class="cat-face"></i>
+          <i class="cat-nose"></i>
+          <i class="cat-whiskers"></i>
+          <b class="cat-z cat-z-one">Z</b>
+          <b class="cat-z cat-z-two">Z</b>
+          <b class="cat-z cat-z-three">Z</b>
+          <b class="cat-z cat-z-four">Z</b>
+        </div>
       </div>
 
-      <div class="meter-stage">
-        <div class="meter-hud">
-          <span class="hud-label" id="meterLabel" title="Tap to toggle Mode">SPOT THE ERROR</span>
-          <span class="hud-score" id="meterScore">SCORE 0000</span>
-        </div>
-        <div class="meter" id="purrMeter" aria-label="Game & Time Meter">
-          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-        </div>
+      <!-- Minimal Time (No "TIME" label) -->
+      <div class="time-text" id="timeText">00<span class="time-colon">:</span>00</div>
+
+      <!-- Time of Day Progress Boxes -->
+      <div class="time-meter" id="timeMeter" aria-label="Day Progress">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
       </div>
     </section>
 
@@ -93,7 +93,7 @@
       </a>
     </nav>
 
-    <!-- Minimal Search Form -->
+    <!-- Search Bar at Bottom -->
     <form class="search-form" id="searchForm" autocomplete="off">
       <span class="search-prompt">λ</span>
       <input 
@@ -111,7 +111,7 @@
     </form>
   </main>
 
-  <script src="grid.js?v=5"></script>
-  <script src="app.js?v=5"></script>
+  <script src="grid.js?v=6"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>
