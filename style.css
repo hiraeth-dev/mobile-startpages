@@ -243,14 +243,13 @@ html, body {
   z-index: 1;
   width: 100%;
   height: 100dvh;
-  max-width: 400px;
+  max-width: 370px;
   margin: 0 auto;
-  padding: max(12px, env(safe-area-inset-top)) 18px max(14px, env(safe-area-inset-bottom)) 18px;
+  padding: max(10px, env(safe-area-inset-top)) 16px max(18px, env(safe-area-inset-bottom)) 16px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   box-sizing: border-box;
-  gap: 12px;
+  overflow: hidden;
 }
 
 /* ── Top Header Bar ── */
@@ -296,21 +295,107 @@ html, body {
   box-shadow: 0 0 0 var(--accent);
 }
 
-/* ── Top Section: Cat + Time + Meter (Positioned at Top) ── */
-.top-section {
+/* ── Main Stack (Centered Vertically) ── */
+.main-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  flex-shrink: 0;
-  margin-top: 4px;
+  justify-content: center;
+  flex: 1;
+  gap: 14px;
+  width: 100%;
+  min-height: 0;
+}
+
+/* ── Retro 3D Signal Shell (Cat Window) ── */
+.signal-shell {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  padding: 0 11px 11px 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.signal-shell::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  inset: 11px 0 0 11px;
+  background: var(--cat-tail);
+  transition: transform 0.12s ease, background 0.15s ease;
+}
+
+.signal-panel {
+  position: relative;
+  z-index: 1;
+  background: var(--bg-panel);
+  border: 2px solid var(--accent);
+  padding: 10px 16px 12px;
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+  transition: transform 0.12s ease, border-color 0.15s ease;
+}
+
+.signal-shell:hover .signal-panel {
+  transform: translate(2px, 2px);
+}
+.signal-shell:hover::after {
+  transform: translate(-1px, -1px);
+}
+.signal-shell:active .signal-panel {
+  transform: translate(4px, 4px);
+}
+.signal-shell:active::after {
+  transform: translate(-2px, -2px);
+}
+
+/* Panel Header */
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--accent);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.panel-head span {
+  margin-right: auto;
+}
+
+.panel-lights {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.panel-lights i {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 0;
+}
+
+.panel-lights i:nth-child(1) { background: var(--accent-bright); }
+.panel-lights i:nth-child(2) { background: var(--fg-dim); opacity: 0.75; }
+.panel-lights i:nth-child(3) { background: var(--accent); }
+
+.panel-rule {
+  height: 1px;
+  margin: 8px -16px 10px;
+  background: var(--accent);
+  opacity: 0.85;
 }
 
 /* Sleeping Kitty (Scaled Cleanly) */
 .cat-wrap {
   position: relative;
   width: 140px;
-  height: 116px;
+  height: 106px;
+  margin: 2px auto 4px;
   overflow: visible;
   display: flex;
   align-items: center;
@@ -325,7 +410,7 @@ html, body {
   user-select: none;
   overflow: visible;
   transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: scale(0.75);
+  transform: scale(0.72);
   transform-origin: center center;
 }
 
@@ -503,83 +588,104 @@ html, body {
   100% { opacity: 0; transform: translate(-10px, -35px) scale(0.9); }
 }
 
-/* Minimal Time Display (No "TIME" label) */
-.time-text {
-  font-size: 2.2rem;
-  font-weight: 700;
-  color: var(--fg);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-variant-numeric: tabular-nums;
-  margin-top: -4px;
-}
-
-.time-colon {
-  color: var(--accent);
-  animation: blink 1s step-end infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0.25; }
-}
-
-/* Time of Day Box Meter */
-.time-meter {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5px;
+/* ── Time Meter & Panel Meta (Matching Uploaded Retro Frame) ── */
+.signal-copy {
+  color: var(--fg-dim);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   margin-top: 2px;
+  margin-bottom: 6px;
 }
 
-.time-meter i {
-  width: 16px;
-  height: 16px;
-  background: var(--bg-panel);
+.meter {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+  justify-content: space-between;
+}
+
+.meter i {
+  flex: 1;
+  height: 14px;
+  background: var(--bg-panel-alt);
   border: 1px solid var(--border);
-  box-shadow: 2px 2px 0 var(--border);
-  display: inline-block;
-  transition: background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
+  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
 }
 
-.time-meter i.lit {
+.meter i.lit {
   background: var(--accent);
   border-color: var(--accent-bright);
+  transform: scale(1.04);
 }
 
-.time-meter i.active-now {
-  background: var(--bg-panel-alt);
-  border-color: var(--accent);
-  box-shadow: 0 0 6px var(--accent);
-  animation: pulseBox 2s infinite ease-in-out;
+.meter i.active-now {
+  background: var(--cat-tail);
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 5px var(--accent);
+  animation: pulseBox 1.8s infinite ease-in-out;
 }
 
 @keyframes pulseBox {
-  0%, 100% { transform: scale(1); border-color: var(--accent); }
-  50% { transform: scale(1.12); border-color: var(--accent-bright); }
+  0%, 100% { border-color: var(--accent); transform: scale(1); }
+  50% { border-color: var(--accent-bright); transform: scale(1.1); }
+}
+
+.panel-divider {
+  border-top: 1px dashed var(--border);
+  margin: 8px 0 6px;
+  opacity: 0.85;
+}
+
+.panel-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--fg-dim);
+  font-size: 0.70rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+}
+
+.panel-meta b {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Launcher Group (Shortcuts + Lifted Search) ── */
+.launcher-group {
+  width: 100%;
+  max-width: 330px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* ── 4 Minimal Shortcuts (2x2 Grid) ── */
 .shortcuts {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  gap: 8px;
   width: 100%;
   flex-shrink: 0;
-  margin: 4px 0;
 }
 
 .shortcut {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px 14px;
+  padding: 10px 12px;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0 var(--border);
   color: var(--fg);
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, color 0.12s ease;
@@ -592,14 +698,14 @@ html, body {
 }
 
 .shortcut-num {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--accent);
   opacity: 0.9;
 }
 
 .shortcut-arrow {
   color: var(--fg-muted);
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   transition: transform 0.15s ease, color 0.15s ease;
 }
 
@@ -622,34 +728,33 @@ html, body {
   border-color: var(--accent);
 }
 
-/* ── Minimal Search Form (Bottom) ── */
+/* ── Minimal Search Form (Grouped closely below shortcuts) ── */
 .search-form {
   position: relative;
   display: flex;
   align-items: center;
   width: 100%;
   flex-shrink: 0;
-  margin-top: 2px;
 }
 
 .search-prompt {
   position: absolute;
-  left: 14px;
+  left: 12px;
   color: var(--accent);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 13px 40px 13px 34px;
+  padding: 11px 36px 11px 30px;
   background: var(--bg-panel-alt);
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0 var(--border);
   color: var(--fg);
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   outline: none;
   transition: border-color 0.12s ease, box-shadow 0.12s ease;
   user-select: text;
@@ -667,7 +772,7 @@ html, body {
 
 .search-clear {
   position: absolute;
-  right: 12px;
+  right: 10px;
   background: transparent;
   border: none;
   color: var(--fg-muted);

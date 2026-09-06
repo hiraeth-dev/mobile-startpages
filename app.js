@@ -71,6 +71,10 @@
 
   // ── Sleeping Cat Petting ──
   const catLogo = document.getElementById('catLogo');
+  const signalShell = document.querySelector('.signal-shell');
+  const kittyState = document.getElementById('kittyState');
+  let petTimer = null;
+
   if (catLogo) {
     const HEARTS = ['♥', '✦', '🐾', 'zzZ', '★'];
 
@@ -90,17 +94,34 @@
       setTimeout(() => heart.remove(), 750);
     }
 
-    catLogo.addEventListener('click', (e) => {
+    function petKitty(e) {
       haptic(20);
       catLogo.classList.remove('pet-bounce');
       void catLogo.offsetWidth;
       catLogo.classList.add('pet-bounce');
       spawnFloatingHeart(e);
-    });
+
+      if (kittyState) {
+        kittyState.textContent = 'PURRING ♥';
+        clearTimeout(petTimer);
+        petTimer = setTimeout(() => {
+          kittyState.textContent = 'PURRING';
+        }, 1800);
+      }
+    }
+
+    catLogo.addEventListener('click', petKitty);
+    if (signalShell) {
+      signalShell.addEventListener('click', (e) => {
+        if (!e.target.closest('.cat-logo')) {
+          petKitty(e);
+        }
+      });
+    }
   }
 
   // ── Time & Day Progress Boxes (12 Blocks = 2h each) ──
-  const timeText = document.getElementById('timeText');
+  const kittyTime = document.getElementById('kittyTime');
   const timeMeter = document.getElementById('timeMeter');
 
   function updateTime() {
@@ -108,8 +129,8 @@
     const hh = String(now.getHours()).padStart(2, '0');
     const mm = String(now.getMinutes()).padStart(2, '0');
     
-    if (timeText) {
-      timeText.innerHTML = `${hh}<span class="time-colon">:</span>${mm}`;
+    if (kittyTime) {
+      kittyTime.textContent = `${hh}:${mm}`;
     }
 
     if (timeMeter) {
