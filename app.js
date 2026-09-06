@@ -5,6 +5,22 @@
 (function() {
   'use strict';
 
+  // Unregister any stale service workers and clear cache storage
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.getRegistrations().then(function(regs) {
+      for (var i = 0; i < regs.length; i++) {
+        regs[i].unregister();
+      }
+    });
+  }
+  if ('caches' in window) {
+    caches.keys().then(function(keys) {
+      for (var j = 0; j < keys.length; j++) {
+        caches.delete(keys[j]);
+      }
+    });
+  }
+
   const bangs = {
     '!dd': 'https://duckduckgo.com/?q=',
     '@dd': 'https://duckduckgo.com/?q=',
@@ -66,10 +82,5 @@
       // 3. Fallback: Google
       window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(raw);
     });
-  }
-
-  // Register service worker if available
-  if ('serviceWorker' in navigator && window.location.protocol.startsWith('http')) {
-    navigator.serviceWorker.register('./sw.js').catch(() => {});
   }
 })();
