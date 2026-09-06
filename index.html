@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="crimson">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <title>hiraeth // startpage</title>
+  <title>startpage</title>
   
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="manifest" href="manifest.json">
@@ -21,124 +21,62 @@
   <!-- Interactive Spring Dot Grid Canvas -->
   <canvas id="grid-canvas"></canvas>
 
-  <!-- Screen-Fitted 100dvh Non-Scrollable Frame -->
-  <div class="screen-wrapper">
-    
-    <!-- Top Navigation Bar -->
-    <nav class="top-bar">
-      <a href="https://hiraeth-dev.github.io" class="nav-brand">
-        <span class="bracket">[</span><span class="accent-char">h</span>iraeth.dev<span class="bracket">]</span>
+  <main class="container">
+    <header class="brand">
+      <div class="brand-prompt"><span class="sym">λ</span>hiraeth.dev</div>
+      <div class="brand-tag">crimson</div>
+    </header>
+
+    <nav class="shortcuts" aria-label="Shortcuts">
+      <a class="shortcut" href="https://x.com">
+        <div class="shortcut-left">
+          <span class="shortcut-num">01</span>
+          <span class="shortcut-name">twitter</span>
+        </div>
+        <span class="shortcut-arrow">→</span>
       </a>
-      <div class="nav-status">
-        <span class="live-dot"></span>
-        <span>sys.ready</span>
-      </div>
-      <button type="button" class="theme-toggle-btn" id="themeToggleBtn" title="Cycle Theme">[crimson]</button>
+
+      <a class="shortcut" href="https://github.com">
+        <div class="shortcut-left">
+          <span class="shortcut-num">02</span>
+          <span class="shortcut-name">github</span>
+        </div>
+        <span class="shortcut-arrow">→</span>
+      </a>
+
+      <a class="shortcut" href="https://hiraeth-dev.github.io">
+        <div class="shortcut-left">
+          <span class="shortcut-num">03</span>
+          <span class="shortcut-name">hiraeth</span>
+        </div>
+        <span class="shortcut-arrow">→</span>
+      </a>
+
+      <a class="shortcut" href="https://fmhy.net">
+        <div class="shortcut-left">
+          <span class="shortcut-num">04</span>
+          <span class="shortcut-name">fmhy</span>
+        </div>
+        <span class="shortcut-arrow">→</span>
+      </a>
     </nav>
 
-    <!-- Retro 3D Terminal Window -->
-    <main class="terminal-window">
-      <div class="terminal-header">
-        <div class="terminal-title">
-          <span>kabir@hiraeth:~</span> <i>(startpage)</i>
-        </div>
-        <div class="terminal-dots">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-cyan"></span>
-        </div>
-      </div>
-
-      <div class="terminal-content">
-        <!-- Terminal Meta / Live Clock -->
-        <div class="terminal-meta-row">
-          <div class="terminal-clock" id="terminalClock">00<span class="colon">:</span>00</div>
-          <div class="terminal-date" id="terminalDate">LOADING…</div>
-        </div>
-
-        <!-- Terminal Search Bar -->
-        <div class="search-block">
-          <form class="dict-search-form" id="dictSearchForm" autocomplete="off">
-            <span class="dict-prompt">λ</span>
-            <div class="dict-input-wrap">
-              <input 
-                type="text" 
-                class="dict-input" 
-                id="dictInput" 
-                placeholder="search or enter url..." 
-                autocapitalize="none" 
-                autocorrect="off" 
-                spellcheck="false"
-                enterkeyhint="go"
-              >
-              <button type="button" class="dict-clear" id="dictClear" aria-label="Clear">×</button>
-            </div>
-            <button type="submit" class="dict-submit">[GO]</button>
-          </form>
-
-          <!-- Search Bang Pills -->
-          <div class="bang-bar" aria-label="Quick Bangs">
-            <button type="button" class="bang-pill" data-bang="!g">!g google</button>
-            <button type="button" class="bang-pill" data-bang="!dd">!dd duck</button>
-            <button type="button" class="bang-pill" data-bang="!yt">!yt youtube</button>
-            <button type="button" class="bang-pill" data-bang="!gh">!gh github</button>
-            <button type="button" class="bang-pill" data-bang="!rd">!rd reddit</button>
-            <button type="button" class="bang-pill" data-bang="!ani">!ani miruro</button>
-            <button type="button" class="bang-pill" data-bang="!fmhy">!fmhy</button>
-          </div>
-        </div>
-
-        <!-- Retro 3D Speed Dial Grid -->
-        <div class="shortcuts-panel">
-          <div class="shortcuts-heading">
-            <span class="sym">//</span> SPEED DIAL
-          </div>
-          <div class="shortcuts-grid" id="shortcutsGrid">
-            <!-- Populated dynamically by app.js -->
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <!-- Bottom Status / Action Bar -->
-    <footer class="mobile-footer">
-      <div class="footer-actions">
-        <button type="button" class="footer-btn" id="footerEditBtn">[edit]</button>
-        <button type="button" class="footer-btn" id="footerAddBtn">[+ add]</button>
-        <button type="button" class="footer-btn" id="footerResetBtn">[reset]</button>
-      </div>
-      <div class="footer-status">SYS_OK • 200</div>
-    </footer>
-
-  </div>
-
-  <!-- Add/Edit Shortcut Terminal Modal -->
-  <div class="modal-overlay" id="shortcutModal" aria-hidden="true">
-    <div class="modal-terminal" role="dialog" aria-modal="true">
-      <div class="terminal-header">
-        <div class="terminal-title" id="modalTitle">ADD SHORTCUT</div>
-        <div class="terminal-dots">
-          <span class="dot dot-red"></span>
-          <span class="dot dot-yellow"></span>
-          <span class="dot dot-cyan"></span>
-        </div>
-      </div>
-      <form class="modal-form" id="modalForm">
-        <div class="form-field">
-          <label class="form-label" for="modalNameInput">LABEL / NAME</label>
-          <input type="text" class="form-input" id="modalNameInput" placeholder="e.g. github" required>
-        </div>
-        <div class="form-field">
-          <label class="form-label" for="modalUrlInput">DESTINATION URL</label>
-          <input type="text" class="form-input" id="modalUrlInput" placeholder="https://github.com" required>
-        </div>
-        <div class="form-actions">
-          <button type="submit" class="modal-btn-submit">[SAVE]</button>
-          <button type="button" class="modal-btn-cancel" id="modalCancelBtn">[CANCEL]</button>
-        </div>
-      </form>
-    </div>
-  </div>
+    <form class="search-form" id="searchForm" autocomplete="off">
+      <span class="search-prompt">λ</span>
+      <input 
+        type="text" 
+        class="search-input" 
+        id="searchInput" 
+        placeholder="search..." 
+        autocapitalize="none" 
+        autocorrect="off" 
+        spellcheck="false"
+        autofocus
+        enterkeyhint="go"
+      >
+      <button type="button" class="search-clear" id="searchClear" aria-label="Clear">×</button>
+    </form>
+  </main>
 
   <script src="grid.js"></script>
   <script src="app.js"></script>
