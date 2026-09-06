@@ -15,18 +15,50 @@
 
   <link rel="preload" href="fonts/MapleMono-NF-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/MapleMono-NF-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=4">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
   <!-- Interactive Spring Dot Grid Canvas -->
   <canvas id="grid-canvas"></canvas>
 
   <main class="container">
+    <!-- Top Header -->
     <header class="brand">
       <div class="brand-prompt"><span class="sym">λ</span>hiraeth.dev</div>
       <button type="button" class="theme-btn" id="themeBtn" title="Switch Theme">crimson</button>
     </header>
 
+    <!-- Sleeping Cat & Interactive Box Game -->
+    <section class="cat-stage">
+      <div class="cat-logo" id="catLogo" aria-hidden="true" title="Pet the kitty!">
+        <i class="cat-tail"></i>
+        <i class="cat-body"></i>
+        <i class="cat-paw cat-paw-one"></i>
+        <i class="cat-paw cat-paw-two"></i>
+        <i class="cat-head"></i>
+        <i class="cat-ear cat-ear-left"></i>
+        <i class="cat-ear cat-ear-right"></i>
+        <i class="cat-face"></i>
+        <i class="cat-nose"></i>
+        <i class="cat-whiskers"></i>
+        <b class="cat-z cat-z-one">Z</b>
+        <b class="cat-z cat-z-two">Z</b>
+        <b class="cat-z cat-z-three">Z</b>
+        <b class="cat-z cat-z-four">Z</b>
+      </div>
+
+      <div class="meter-stage">
+        <div class="meter-hud">
+          <span class="hud-label" id="meterLabel" title="Tap to toggle Mode">SPOT THE ERROR</span>
+          <span class="hud-score" id="meterScore">SCORE 0000</span>
+        </div>
+        <div class="meter" id="purrMeter" aria-label="Game & Time Meter">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4 Minimal Shortcuts (2x2 Grid) -->
     <nav class="shortcuts" aria-label="Shortcuts">
       <a class="shortcut" href="https://x.com">
         <div class="shortcut-left">
@@ -61,13 +93,14 @@
       </a>
     </nav>
 
+    <!-- Minimal Search Form -->
     <form class="search-form" id="searchForm" autocomplete="off">
       <span class="search-prompt">λ</span>
       <input 
         type="text" 
         class="search-input" 
         id="searchInput" 
-        placeholder="search..." 
+        placeholder="search or enter url..." 
         autocapitalize="none" 
         autocorrect="off" 
         spellcheck="false"
@@ -78,7 +111,7 @@
     </form>
   </main>
 
-  <script src="grid.js?v=4"></script>
-  <script src="app.js?v=4"></script>
+  <script src="grid.js?v=5"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>

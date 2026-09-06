@@ -1,6 +1,6 @@
 /* ══════════════════════════════════════════════════════════════
    Hiraeth Minimal Mobile Startpage
-   100% Screen Fitted • Zero Scroll • Multi-Theme System
+   100% Screen Fitted • Zero Scroll • Sleeping Cat & Box Game
    ══════════════════════════════════════════════════════════════ */
 
 @font-face {
@@ -36,10 +36,17 @@
   --grid-fade: #0c0406;
   --grid-line: rgba(255, 42, 75, 0.06);
   --grid-dot: rgba(255, 42, 75, 0.28);
+  --cat-head: #ff2a4b;
+  --cat-body: #c51d36;
+  --cat-tail: #7a1222;
+  --cat-ear: #ff526e;
+  --cat-paw: #3d141b;
+  --cat-whiskers: #fceeee;
+  --cat-z: #fceeee;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 2. Matrix (Cyber Green / Terminal Phosphor) ── */
+/* ── 2. Matrix (Cyber Green / Phosphor) ── */
 [data-theme="matrix"] {
   --bg: #020b06;
   --bg-panel: #06150c;
@@ -55,6 +62,13 @@
   --grid-fade: #020b06;
   --grid-line: rgba(0, 255, 102, 0.06);
   --grid-dot: rgba(0, 255, 102, 0.30);
+  --cat-head: #00ff66;
+  --cat-body: #00cc52;
+  --cat-tail: #0b4a22;
+  --cat-ear: #33ff85;
+  --cat-paw: #143822;
+  --cat-whiskers: #e2fbe8;
+  --cat-z: #e2fbe8;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -74,10 +88,17 @@
   --grid-fade: #080911;
   --grid-line: rgba(0, 240, 255, 0.06);
   --grid-dot: rgba(0, 240, 255, 0.28);
+  --cat-head: #00f0ff;
+  --cat-body: #00b8c4;
+  --cat-tail: #1a4252;
+  --cat-ear: #38bdf8;
+  --cat-paw: #1f2740;
+  --cat-whiskers: #e3ebfc;
+  --cat-z: #e3ebfc;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 4. Solaris (Amber Cathode / Golden Console) ── */
+/* ── 4. Solaris (Amber Console) ── */
 [data-theme="solaris"] {
   --bg: #0c0904;
   --bg-panel: #171207;
@@ -93,10 +114,17 @@
   --grid-fade: #0c0904;
   --grid-line: rgba(245, 158, 11, 0.06);
   --grid-dot: rgba(245, 158, 11, 0.28);
+  --cat-head: #f59e0b;
+  --cat-body: #d97706;
+  --cat-tail: #5c3507;
+  --cat-ear: #fbbf24;
+  --cat-paw: #3b2c11;
+  --cat-whiskers: #fef4dd;
+  --cat-z: #fef4dd;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 5. Abyssal (Bioluminescent Ocean Azure) ── */
+/* ── 5. Abyssal (Oceanic Azure) ── */
 [data-theme="abyssal"] {
   --bg: #030a12;
   --bg-panel: #071422;
@@ -112,10 +140,17 @@
   --grid-fade: #030a12;
   --grid-line: rgba(56, 189, 248, 0.06);
   --grid-dot: rgba(56, 189, 248, 0.28);
+  --cat-head: #38bdf8;
+  --cat-body: #0284c7;
+  --cat-tail: #0c3559;
+  --cat-ear: #7dd3fc;
+  --cat-paw: #15324f;
+  --cat-whiskers: #e0f2fe;
+  --cat-z: #e0f2fe;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 6. Synthwave (Retro Outrun Hot Pink × Sunset) ── */
+/* ── 6. Synthwave (Hot Rose × Sunset) ── */
 [data-theme="synthwave"] {
   --bg: #0d0614;
   --bg-panel: #170c24;
@@ -131,10 +166,17 @@
   --grid-fade: #0d0614;
   --grid-line: rgba(244, 63, 94, 0.06);
   --grid-dot: rgba(244, 63, 94, 0.28);
+  --cat-head: #f43f5e;
+  --cat-body: #e11d48;
+  --cat-tail: #631432;
+  --cat-ear: #fb7185;
+  --cat-paw: #3d1c5b;
+  --cat-whiskers: #fdf2f8;
+  --cat-z: #fdf2f8;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 7. Parchment (Warm Tactile Paper × Vermilion Ink) ── */
+/* ── 7. Parchment (Archival Paper) ── */
 [data-theme="parchment"] {
   --bg: #eae1cd;
   --bg-panel: #f7f2e7;
@@ -150,6 +192,13 @@
   --grid-fade: #eae1cd;
   --grid-line: rgba(59, 45, 31, 0.09);
   --grid-dot: rgba(59, 45, 31, 0.28);
+  --cat-head: #8b2513;
+  --cat-body: #6f1d0f;
+  --cat-tail: #45130a;
+  --cat-ear: #b3321d;
+  --cat-paw: #3b2d1f;
+  --cat-whiskers: #1c1611;
+  --cat-z: #1c1611;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -172,7 +221,7 @@ html, body {
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-mono);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.4;
   user-select: none;
   -webkit-user-select: none;
@@ -194,27 +243,27 @@ html, body {
   z-index: 1;
   width: 100%;
   height: 100dvh;
-  max-width: 400px;
+  max-width: 420px;
   margin: 0 auto;
-  padding: max(20px, env(safe-area-inset-top)) 24px max(20px, env(safe-area-inset-bottom)) 24px;
+  padding: max(14px, env(safe-area-inset-top)) 18px max(14px, env(safe-area-inset-bottom)) 18px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 28px;
+  justify-content: space-between;
   box-sizing: border-box;
 }
 
-/* ── Terminal Header Prompt ── */
+/* ── Top Header Bar ── */
 .brand {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
 }
 
 .brand-prompt {
-  font-size: 0.88rem;
+  font-size: 0.85rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--fg-dim);
@@ -231,9 +280,9 @@ html, body {
   box-shadow: 2px 2px 0 var(--border);
   color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.76rem;
+  font-size: 0.74rem;
   font-weight: 700;
-  padding: 4px 10px;
+  padding: 3px 8px;
   cursor: pointer;
   text-transform: lowercase;
   letter-spacing: 0.05em;
@@ -241,35 +290,333 @@ html, body {
   user-select: none;
 }
 
-.theme-btn:hover {
-  border-color: var(--accent);
-  box-shadow: 2px 2px 0 var(--accent);
-}
-
 .theme-btn:active {
   transform: translate(2px, 2px);
   box-shadow: 0 0 0 var(--accent);
 }
 
-/* ── 4 Minimal Shortcuts ── */
-.shortcuts {
+/* ── Cat Logo & Sleeping Kitty ── */
+.cat-stage {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+  gap: 8px;
+}
+
+.cat-logo {
+  position: relative;
+  width: 182px;
+  height: 154px;
+  margin: 0 auto;
+  cursor: pointer;
+  user-select: none;
+  overflow: visible;
+  transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform: scale(0.88);
+}
+
+.cat-logo i {
+  position: absolute;
+  display: block;
+}
+
+.cat-tail {
+  z-index: 1;
+  left: 126px;
+  top: 48px;
+  width: 48px;
+  height: 101px;
+  background: var(--cat-tail);
+  clip-path: polygon(35% 0, 100% 0, 100% 75%, 83% 75%, 83% 100%, 0 100%, 0 76%, 50% 76%, 50% 25%, 35% 25%);
+}
+
+.cat-body {
+  z-index: 2;
+  left: 69px;
+  top: 86px;
+  width: 83px;
+  height: 63px;
+  background: var(--cat-body);
+  clip-path: polygon(0 18%, 16% 18%, 16% 0, 66% 0, 66% 12%, 84% 12%, 84% 31%, 100% 31%, 100% 100%, 0 100%);
+}
+
+.cat-paw {
+  z-index: 5;
+  top: 135px;
+  width: 26px;
+  height: 14px;
+  background: var(--cat-paw);
+}
+
+.cat-paw-one { left: 55px; }
+.cat-paw-two { left: 108px; }
+
+.cat-paw::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  bottom: 3px;
+  width: 3px;
+  height: 3px;
+  box-shadow: 7px 0 0 var(--cat-tail), 14px 0 0 var(--cat-tail);
+}
+
+.cat-head {
+  z-index: 6;
+  left: 25px;
+  top: 57px;
+  width: 74px;
+  height: 70px;
+  background: var(--cat-head);
+  clip-path: polygon(0 17%, 14% 17%, 14% 0, 31% 16%, 68% 16%, 85% 0, 85% 17%, 100% 17%, 100% 100%, 0 100%);
+}
+
+.cat-ear {
+  z-index: 7;
+  top: 38px;
+  width: 28px;
+  height: 31px;
+  background: var(--cat-ear);
+}
+
+.cat-ear-left {
+  left: 28px;
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+}
+
+.cat-ear-right {
+  left: 70px;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.cat-ear::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 8px;
+  width: 12px;
+  height: 16px;
+  background: var(--cat-tail);
+  clip-path: polygon(0 100%, 0 0, 100% 100%);
+}
+
+.cat-ear-right::after {
+  left: 8px;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.cat-face {
+  z-index: 9;
+  left: 39px;
+  top: 86px;
+  width: 16px;
+  height: 4px;
+  background: var(--bg);
+  box-shadow: 29px 0 0 var(--bg);
+}
+
+.cat-nose {
+  z-index: 10;
+  left: 60px;
+  top: 98px;
+  width: 8px;
+  height: 6px;
+  background: var(--accent);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.cat-whiskers {
+  z-index: 9;
+  left: 24px;
+  top: 105px;
+  width: 27px;
+  height: 2px;
+  background: var(--cat-whiskers);
+  box-shadow: 0 7px 0 var(--cat-whiskers);
+}
+
+.cat-whiskers::after {
+  content: "";
+  position: absolute;
+  left: 49px;
+  top: 0;
+  width: 27px;
+  height: 2px;
+  background: var(--cat-whiskers);
+  box-shadow: 0 7px 0 var(--cat-whiskers);
+}
+
+.cat-z {
+  position: absolute;
+  z-index: 10;
+  color: var(--cat-z);
+  font-family: var(--font-mono);
+  font-weight: 800;
+  line-height: 1;
+}
+
+.cat-z-one { top: 22px; left: 139px; font-size: 16px; }
+.cat-z-two { top: 7px; left: 158px; font-size: 12px; color: var(--accent); }
+.cat-z-three { top: 41px; left: 173px; font-size: 10px; color: var(--cat-tail); }
+.cat-z-four { top: 57px; left: 165px; font-size: 8px; color: var(--accent); }
+
+/* Squish and hearts */
+.cat-logo:active,
+.cat-logo.pet-bounce {
+  animation: petSquish 0.28s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes petSquish {
+  0% { transform: scale(0.88) translateY(-3px); }
+  30% { transform: scale(0.95, 0.82) translateY(2px); }
+  60% { transform: scale(0.84, 0.92) translateY(-4px); }
+  100% { transform: scale(0.88) translateY(0); }
+}
+
+.pet-heart {
+  position: absolute;
+  pointer-events: none;
+  color: var(--accent);
+  font-size: 14px;
+  animation: floatHeart 0.75s ease-out forwards;
+  z-index: 30;
+  font-weight: 800;
+}
+
+@keyframes floatHeart {
+  0% { opacity: 1; transform: translate(0, 0) scale(0.6); }
+  50% { opacity: 0.95; transform: translate(-6px, -20px) scale(1.2); }
+  100% { opacity: 0; transform: translate(-10px, -35px) scale(0.9); }
+}
+
+/* ── Box Game / Time-of-Day Meter ── */
+.meter-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
   width: 100%;
+}
+
+.meter-hud {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 280px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+.meter-hud .hud-label {
+  cursor: pointer;
+  color: var(--accent);
+  transition: opacity 0.12s ease;
+}
+
+.meter-hud .hud-label:active {
+  opacity: 0.6;
+}
+
+.meter-hud .hud-score {
+  font-family: var(--font-mono);
+  color: var(--fg);
+}
+
+.meter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  user-select: none;
+}
+
+.meter i {
+  width: 18px;
+  height: 18px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  box-shadow: 2px 2px 0 var(--border);
+  cursor: pointer;
+  display: inline-block;
+  transition: background 0.12s ease, transform 0.12s ease, border-color 0.12s ease;
+}
+
+.meter i:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--border);
+}
+
+.meter i.g-primary {
+  background: var(--accent) !important;
+  border-color: var(--accent-bright);
+}
+
+.meter i.g-secondary {
+  background: var(--border-strong) !important;
+  border-color: var(--accent);
+}
+
+.meter i.g-error {
+  background: var(--accent-soft) !important;
+  border-color: #ffffff;
+}
+
+.meter i.g-win {
+  background: #ffffff !important;
+  border-color: var(--accent);
+  animation: gameWin 0.4s ease-out;
+}
+
+@keyframes gameWin {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.28); }
+  100% { transform: scale(1); }
+}
+
+.meter i.g-miss {
+  animation: gameMiss 0.3s ease;
+}
+
+@keyframes gameMiss {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-3px); }
+  75% { transform: translateX(3px); }
+}
+
+/* Time of Day / Hour indicator */
+.meter i.hour-lit {
+  background: var(--accent) !important;
+  border-color: var(--accent-bright);
+  box-shadow: 2px 2px 0 var(--accent-bright);
+}
+
+/* ── 4 Minimal Shortcuts (2x2 Grid) ── */
+.shortcuts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+  flex-shrink: 0;
 }
 
 .shortcut {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 16px;
+  padding: 10px 12px;
   background: var(--bg-panel);
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0 var(--border);
   color: var(--fg);
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease, color 0.12s ease;
@@ -278,18 +625,18 @@ html, body {
 .shortcut-left {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
 }
 
 .shortcut-num {
-  font-size: 0.78rem;
+  font-size: 0.72rem;
   color: var(--accent);
   opacity: 0.9;
 }
 
 .shortcut-arrow {
   color: var(--fg-muted);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   transition: transform 0.15s ease, color 0.15s ease;
 }
 
@@ -318,26 +665,28 @@ html, body {
   display: flex;
   align-items: center;
   width: 100%;
+  flex-shrink: 0;
+  margin-top: 4px;
 }
 
 .search-prompt {
   position: absolute;
-  left: 14px;
+  left: 12px;
   color: var(--accent);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.95rem;
   pointer-events: none;
 }
 
 .search-input {
   width: 100%;
-  padding: 13px 40px 13px 34px;
+  padding: 11px 36px 11px 30px;
   background: var(--bg-panel-alt);
   border: 1px solid var(--border);
   box-shadow: 3px 3px 0 var(--border);
   color: var(--fg);
   font-family: var(--font-mono);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   outline: none;
   transition: border-color 0.12s ease, box-shadow 0.12s ease;
   user-select: text;
@@ -355,11 +704,11 @@ html, body {
 
 .search-clear {
   position: absolute;
-  right: 12px;
+  right: 10px;
   background: transparent;
   border: none;
   color: var(--fg-muted);
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   display: none;
   padding: 4px;
@@ -375,7 +724,7 @@ html, body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .shortcut, .search-input, .theme-btn {
+  .shortcut, .search-input, .theme-btn, .cat-logo {
     transition: none !important;
   }
 }
