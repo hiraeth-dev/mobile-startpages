@@ -25,12 +25,12 @@
   }
 
   // ── Multi-Theme System ──
-  const THEMES = ['crimson', 'matrix', 'cyberpunk', 'solaris', 'abyssal', 'synthwave', 'parchment'];
+  const THEMES = ['crimson', 'matrix', 'cyberpunk', 'jade', 'abyssal', 'synthwave', 'parchment'];
   const THEME_COLORS = {
     crimson: '#0c0406',
     matrix: '#020b06',
     cyberpunk: '#080911',
-    solaris: '#0c0904',
+    jade: '#081512',
     abyssal: '#030a12',
     synthwave: '#0d0614',
     parchment: '#eae1cd'
@@ -38,8 +38,14 @@
 
   let currentTheme = 'crimson';
   try {
-    currentTheme = localStorage.getItem('hiraeth_mobile_theme') || 'crimson';
-    if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'crimson';
+    const params = new URLSearchParams(window.location.search);
+    const qTheme = params.get('theme');
+    if (qTheme && THEMES.indexOf(qTheme) >= 0) {
+      currentTheme = qTheme;
+    } else {
+      currentTheme = localStorage.getItem('hiraeth_mobile_theme') || 'crimson';
+      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'crimson';
+    }
   } catch(e) {
     currentTheme = 'crimson';
   }

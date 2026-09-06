@@ -98,29 +98,29 @@
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 4. Solaris (Amber Console) ── */
-[data-theme="solaris"] {
-  --bg: #0c0904;
-  --bg-panel: #171207;
-  --bg-panel-alt: #231b0b;
-  --border: #3b2c11;
-  --border-strong: #f59e0b;
-  --fg: #fef4dd;
-  --fg-dim: #d3ab60;
-  --fg-muted: #7d602a;
-  --accent: #f59e0b;
-  --accent-bright: #fbbf24;
-  --accent-soft: #ef4444;
-  --grid-fade: #0c0904;
-  --grid-line: rgba(245, 158, 11, 0.06);
-  --grid-dot: rgba(245, 158, 11, 0.28);
-  --cat-head: #f59e0b;
-  --cat-body: #d97706;
-  --cat-tail: #5c3507;
-  --cat-ear: #fbbf24;
-  --cat-paw: #3b2c11;
-  --cat-whiskers: #fef4dd;
-  --cat-z: #fef4dd;
+/* ── 4. Jade (Emerald Console) ── */
+[data-theme="jade"] {
+  --bg: #081512;
+  --bg-panel: #0f251f;
+  --bg-panel-alt: #16362d;
+  --border: #1b6352;
+  --border-strong: #1e9177;
+  --fg: #a8c5b5;
+  --fg-dim: #9ab8a8;
+  --fg-muted: #567d6c;
+  --accent: #1e9177;
+  --accent-bright: #26a589;
+  --accent-soft: #167a63;
+  --grid-fade: #081512;
+  --grid-line: rgba(30, 145, 119, 0.06);
+  --grid-dot: rgba(30, 145, 119, 0.28);
+  --cat-head: #1e9177;
+  --cat-body: #167a63;
+  --cat-tail: #0f3d32;
+  --cat-ear: #26a589;
+  --cat-paw: #1b6352;
+  --cat-whiskers: #b9d1c2;
+  --cat-z: #b9d1c2;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
