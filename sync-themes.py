@@ -59,14 +59,13 @@ def sync():
 
     themes = {}
     for name, body in matches:
-        if name not in themes:  # keep first full definition
-            vars_dict = {}
-            for line in body.strip().split("\n"):
-                line = line.strip()
-                if line.startswith("--"):
-                    k, v = line.split(":", 1)
-                    vars_dict[k.strip()] = v.rstrip(";").strip()
-            themes[name] = vars_dict
+        # merge: hiraeth may split a theme across blocks (e.g. cat ramps)
+        vars_dict = themes.setdefault(name, {})
+        for line in body.strip().split("\n"):
+            line = line.strip()
+            if line.startswith("--"):
+                k, v = line.split(":", 1)
+                vars_dict[k.strip()] = v.rstrip(";").strip()
 
     theme_order = ["kanagawa", "miasma", "solitude", "gruvbox"]
     valid_themes = [t for t in theme_order if t in themes]
@@ -101,18 +100,47 @@ def sync():
         lines.append(f"  --accent: {v.get('--accent', '#D9A78B')};")
         lines.append(f"  --accent-bright: {v.get('--accent-bright', '#F2BEA0')};")
         lines.append(f"  --accent-soft: {v.get('--accent-soft', '#7794A6')};")
+        lines.append(f"  --accent-dim: {v.get('--accent-dim', '#8BA37A')};")
+        lines.append(f"  --link: {v.get('--link', v.get('--accent-soft', '#7794A6'))};")
+        lines.append(f"  --link-hover: {v.get('--link-hover', v.get('--accent-bright', '#F2BEA0'))};")
+        lines.append(f"  --focus-ring: {v.get('--focus-ring', v.get('--accent', '#D9A78B'))};")
+        lines.append(f"  --bg-glow: {v.get('--bg-glow', v.get('--bg-panel', '#20272E'))};")
+        lines.append(f"  --bg-core: {v.get('--bg-core', v.get('--bg', '#1A2026'))};")
+        lines.append(f"  --bar-a: {v.get('--bar-a', v.get('--accent', '#D9A78B'))};")
+        lines.append(f"  --bar-b: {v.get('--bar-b', v.get('--accent-soft', '#7794A6'))};")
+        lines.append(f"  --bar-c: {v.get('--bar-c', v.get('--accent-dim', '#8BA37A'))};")
+        lines.append(f"  --orange: {v.get('--orange', v.get('--accent', '#D9A78B'))};")
+        lines.append(f"  --orange-deep: {v.get('--orange-deep', '#A67A61')};")
+        lines.append(f"  --red: {v.get('--red', '#D96C6C')};")
+        lines.append(f"  --red-deep: {v.get('--red-deep', '#A64F4F')};")
+        lines.append(f"  --cyan: {v.get('--cyan', '#77A3A0')};")
+        lines.append(f"  --cyan-deep: {v.get('--cyan-deep', '#547875')};")
+        lines.append(f"  --yellow: {v.get('--yellow', '#F2BEA0')};")
+        lines.append(f"  --text-xs: {v.get('--text-xs', '0.75rem')};")
+        lines.append(f"  --text-sm: {v.get('--text-sm', '0.875rem')};")
+        lines.append(f"  --text-base: {v.get('--text-base', '1rem')};")
+        lines.append(f"  --text-lg: {v.get('--text-lg', '1.25rem')};")
+        lines.append(f"  --text-xl: {v.get('--text-xl', '1.8125rem')};")
+        lines.append(f"  --text-2xl: {v.get('--text-2xl', '2.5625rem')};")
+        lines.append(f"  --content-w: {v.get('--content-w', '720px')};")
+        lines.append(f"  --content-w-wide: {v.get('--content-w-wide', '1100px')};")
+        lines.append(f"  --content-w-list: {v.get('--content-w-list', '960px')};")
+        lines.append(f"  --cat-dark: {v.get('--cat-dark', '#936B53')};")
+        lines.append(f"  --cat-mid: {v.get('--cat-mid', '#A67A61')};")
+        lines.append(f"  --cat-base: {v.get('--cat-base', '#D9A78B')};")
+        lines.append(f"  --cat-light: {v.get('--cat-light', '#F2BEA0')};")
         lines.append(f"  --grid-fade: {v.get('--grid-fade', v.get('--bg', '#1A2026'))};")
         lines.append(f"  --grid-line: {v.get('--grid-line', 'rgba(217, 167, 139, 0.08)')};")
         lines.append(f"  --grid-dot: {v.get('--grid-dot', 'rgba(217, 167, 139, 0.28)')};")
         for nk, nv in noc.items():
             lines.append(f"  --{nk}: {nv};")
-        lines.append("  --cat-head: var(--noctalia-primary);")
-        lines.append("  --cat-body: var(--noctalia-primary-mid);")
-        lines.append("  --cat-tail: var(--noctalia-primary-dark);")
-        lines.append("  --cat-ear: var(--noctalia-primary-light);")
-        lines.append("  --cat-paw: var(--noctalia-primary-light);")
-        lines.append("  --cat-whiskers: var(--noctalia-primary-light);")
-        lines.append("  --cat-z: var(--noctalia-primary-light);")
+        lines.append("  --cat-head: var(--cat-base);")
+        lines.append("  --cat-body: var(--cat-mid);")
+        lines.append("  --cat-tail: var(--cat-dark);")
+        lines.append("  --cat-ear: var(--cat-light);")
+        lines.append("  --cat-paw: var(--cat-light);")
+        lines.append("  --cat-whiskers: var(--cat-light);")
+        lines.append("  --cat-z: var(--cat-light);")
         lines.append("  --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;")
         lines.append("}")
         css_blocks.append("\n".join(lines))
@@ -123,7 +151,7 @@ def sync():
     with open(MOBILE_CSS, "r", encoding="utf-8") as f:
         mob_css = f.read()
 
-    start_marker = "/* ── 1. Kanagawa"
+    start_marker = ":root,"
     end_marker = "/* ── Reset & Screen Lock ── */"
 
     idx_start = mob_css.find(start_marker)

@@ -7,8 +7,8 @@
   const ctx = c.getContext('2d');
   let mx = -9999, my = -9999, lmx = -9999, lmy = -9999;
   let pts = [];
-  const SPACING = 48;
-  const RADIUS = 110;
+  const SPACING = 55;
+  const RADIUS = 120;
   const STRENGTH = 0.4;
   const DAMP = 0.88;
   const SPRING = 0.04;
@@ -35,6 +35,7 @@
 
   let clr = getColors();
   let dotRgba = parseRgba(clr.dot);
+  let live = false;
 
   document.addEventListener('themechange', () => {
     clr = getColors();
@@ -80,8 +81,8 @@
 
     const grad = ctx.createLinearGradient(0, 0, 0, h);
     grad.addColorStop(0, clr.fade);
-    grad.addColorStop(0.15, hexAlpha(clr.fade, 0));
-    grad.addColorStop(0.85, hexAlpha(clr.fade, 0));
+    grad.addColorStop(0.12, hexAlpha(clr.fade, 0));
+    grad.addColorStop(0.88, hexAlpha(clr.fade, 0));
     grad.addColorStop(1, clr.fade);
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, w, h);
@@ -192,6 +193,10 @@
     }
 
     draw(now);
+    if (!live) {
+      live = true;
+      document.documentElement.classList.add('grid-live');
+    }
     requestAnimationFrame(tick);
   }
 
@@ -230,5 +235,10 @@
   window.addEventListener('resize', resize);
 
   resize();
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    draw();
+    document.documentElement.classList.add('grid-live');
+    return;
+  }
   requestAnimationFrame(tick);
 })();
