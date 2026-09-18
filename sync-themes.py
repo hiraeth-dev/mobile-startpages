@@ -35,6 +35,20 @@ NOCTALIA_PALETTES = {
         "noctalia-primary-dark": "#b65719",
         "noctalia-primary-light": "#f0b48d",
         "noctalia-surface": "#282828"
+    },
+    "dusky": {
+        "noctalia-primary": "#d85d7b",
+        "noctalia-primary-mid": "#a74a63",
+        "noctalia-primary-dark": "#76374a",
+        "noctalia-primary-light": "#dc97ad",
+        "noctalia-surface": "#13111a"
+    },
+    "cyberpunk": {
+        "noctalia-primary": "#C4A82E",
+        "noctalia-primary-mid": "#968128",
+        "noctalia-primary-dark": "#675a21",
+        "noctalia-primary-light": "#cdc18c",
+        "noctalia-surface": "#0a0d14"
     }
 }
 
@@ -118,22 +132,18 @@ def sync():
         lines.append(f"  --content-w: {v.get('--content-w', '720px')};")
         lines.append(f"  --content-w-wide: {v.get('--content-w-wide', '1100px')};")
         lines.append(f"  --content-w-list: {v.get('--content-w-list', '960px')};")
-        lines.append(f"  --cat-dark: {v.get('--cat-dark', '#936B53')};")
-        lines.append(f"  --cat-mid: {v.get('--cat-mid', '#A67A61')};")
-        lines.append(f"  --cat-base: {v.get('--cat-base', '#D9A78B')};")
-        lines.append(f"  --cat-light: {v.get('--cat-light', '#F2BEA0')};")
         lines.append(f"  --grid-fade: {v.get('--grid-fade', v.get('--bg', '#1A2026'))};")
         lines.append(f"  --grid-line: {v.get('--grid-line', 'rgba(217, 167, 139, 0.08)')};")
         lines.append(f"  --grid-dot: {v.get('--grid-dot', 'rgba(217, 167, 139, 0.28)')};")
         for nk, nv in noc.items():
             lines.append(f"  --{nk}: {nv};")
-        lines.append("  --cat-head: var(--cat-base);")
-        lines.append("  --cat-body: var(--cat-mid);")
-        lines.append("  --cat-tail: var(--cat-dark);")
-        lines.append("  --cat-ear: var(--cat-light);")
-        lines.append("  --cat-paw: var(--cat-light);")
-        lines.append("  --cat-whiskers: var(--cat-light);")
-        lines.append("  --cat-z: var(--cat-light);")
+        lines.append("  --cat-head: var(--noctalia-primary);")
+        lines.append("  --cat-body: var(--noctalia-primary-mid);")
+        lines.append("  --cat-tail: var(--noctalia-primary-dark);")
+        lines.append("  --cat-ear: var(--noctalia-primary-light);")
+        lines.append("  --cat-paw: var(--noctalia-primary-light);")
+        lines.append("  --cat-whiskers: var(--noctalia-primary-light);")
+        lines.append("  --cat-z: var(--noctalia-primary-light);")
         lines.append("  --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;")
         lines.append("}")
         css_blocks.append("\n".join(lines))

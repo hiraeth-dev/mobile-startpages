@@ -57,10 +57,6 @@
   --content-w: 720px;
   --content-w-wide: 1100px;
   --content-w-list: 960px;
-  --cat-dark: #936B53;
-  --cat-mid: #A67A61;
-  --cat-base: #D9A78B;
-  --cat-light: #F2BEA0;
   --grid-fade: #1A2026;
   --grid-line: rgba(217, 167, 139, 0.08);
   --grid-dot: rgba(217, 167, 139, 0.28);
@@ -69,13 +65,13 @@
   --noctalia-primary-dark: #bf6d3f;
   --noctalia-primary-light: #ebd0c1;
   --noctalia-surface: #1a2026;
-  --cat-head: var(--cat-base);
-  --cat-body: var(--cat-mid);
-  --cat-tail: var(--cat-dark);
-  --cat-ear: var(--cat-light);
-  --cat-paw: var(--cat-light);
-  --cat-whiskers: var(--cat-light);
-  --cat-z: var(--cat-light);
+  --cat-head: var(--noctalia-primary);
+  --cat-body: var(--noctalia-primary-mid);
+  --cat-tail: var(--noctalia-primary-dark);
+  --cat-ear: var(--noctalia-primary-light);
+  --cat-paw: var(--noctalia-primary-light);
+  --cat-whiskers: var(--noctalia-primary-light);
+  --cat-z: var(--noctalia-primary-light);
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -116,10 +112,6 @@
   --content-w: 720px;
   --content-w-wide: 1100px;
   --content-w-list: 960px;
-  --cat-dark: #2f353b;
-  --cat-mid: #5d6367;
-  --cat-base: #798186;
-  --cat-light: #a8adb0;
   --grid-fade: #101315;
   --grid-line: rgba(121, 129, 134, 0.08);
   --grid-dot: rgba(121, 129, 134, 0.28);
@@ -128,13 +120,13 @@
   --noctalia-primary-dark: #494d50;
   --noctalia-primary-light: #9fa4a8;
   --noctalia-surface: #101315;
-  --cat-head: var(--cat-base);
-  --cat-body: var(--cat-mid);
-  --cat-tail: var(--cat-dark);
-  --cat-ear: var(--cat-light);
-  --cat-paw: var(--cat-light);
-  --cat-whiskers: var(--cat-light);
-  --cat-z: var(--cat-light);
+  --cat-head: var(--noctalia-primary);
+  --cat-body: var(--noctalia-primary-mid);
+  --cat-tail: var(--noctalia-primary-dark);
+  --cat-ear: var(--noctalia-primary-light);
+  --cat-paw: var(--noctalia-primary-light);
+  --cat-whiskers: var(--noctalia-primary-light);
+  --cat-z: var(--noctalia-primary-light);
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -175,10 +167,6 @@
   --content-w: 720px;
   --content-w-wide: 1100px;
   --content-w-list: 960px;
-  --cat-dark: #744527;
-  --cat-mid: #e78a4e;
-  --cat-base: #d8a657;
-  --cat-light: #ebdbb2;
   --grid-fade: #282828;
   --grid-line: rgba(231, 138, 78, 0.08);
   --grid-dot: rgba(231, 138, 78, 0.28);
@@ -187,13 +175,13 @@
   --noctalia-primary-dark: #b65719;
   --noctalia-primary-light: #f0b48d;
   --noctalia-surface: #282828;
-  --cat-head: var(--cat-base);
-  --cat-body: var(--cat-mid);
-  --cat-tail: var(--cat-dark);
-  --cat-ear: var(--cat-light);
-  --cat-paw: var(--cat-light);
-  --cat-whiskers: var(--cat-light);
-  --cat-z: var(--cat-light);
+  --cat-head: var(--noctalia-primary);
+  --cat-body: var(--noctalia-primary-mid);
+  --cat-tail: var(--noctalia-primary-dark);
+  --cat-ear: var(--noctalia-primary-light);
+  --cat-paw: var(--noctalia-primary-light);
+  --cat-whiskers: var(--noctalia-primary-light);
+  --cat-z: var(--noctalia-primary-light);
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -234,25 +222,21 @@
   --content-w: 720px;
   --content-w-wide: 1100px;
   --content-w-list: 960px;
-  --cat-dark: #622f41;
-  --cat-mid: #9d465e;
-  --cat-base: #d85d7b;
-  --cat-light: #dc91a7;
   --grid-fade: #13111a;
   --grid-line: rgba(216, 93, 123, 0.08);
   --grid-dot: rgba(216, 93, 123, 0.28);
   --noctalia-primary: #d85d7b;
-  --noctalia-primary-mid: #9b74b8;
-  --noctalia-primary-dark: #d85d7b;
-  --noctalia-primary-light: #e86b7c;
+  --noctalia-primary-mid: #a74a63;
+  --noctalia-primary-dark: #76374a;
+  --noctalia-primary-light: #dc97ad;
   --noctalia-surface: #13111a;
-  --cat-head: var(--cat-base);
-  --cat-body: var(--cat-mid);
-  --cat-tail: var(--cat-dark);
-  --cat-ear: var(--cat-light);
-  --cat-paw: var(--cat-light);
-  --cat-whiskers: var(--cat-light);
-  --cat-z: var(--cat-light);
+  --cat-head: var(--noctalia-primary);
+  --cat-body: var(--noctalia-primary-mid);
+  --cat-tail: var(--noctalia-primary-dark);
+  --cat-ear: var(--noctalia-primary-light);
+  --cat-paw: var(--noctalia-primary-light);
+  --cat-whiskers: var(--noctalia-primary-light);
+  --cat-z: var(--noctalia-primary-light);
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -293,25 +277,21 @@
   --content-w: 720px;
   --content-w-wide: 1100px;
   --content-w-list: 960px;
-  --cat-dark: #51481e;
-  --cat-mid: #8c7a26;
-  --cat-base: #C4A82E;
-  --cat-light: #cbbc77;
   --grid-fade: #0a0d14;
   --grid-line: rgba(196, 168, 46, 0.08);
   --grid-dot: rgba(196, 168, 46, 0.28);
   --noctalia-primary: #C4A82E;
-  --noctalia-primary-mid: #D14358;
-  --noctalia-primary-dark: #C4A82E;
-  --noctalia-primary-light: #d7a23a;
+  --noctalia-primary-mid: #968128;
+  --noctalia-primary-dark: #675a21;
+  --noctalia-primary-light: #cdc18c;
   --noctalia-surface: #0a0d14;
-  --cat-head: var(--cat-base);
-  --cat-body: var(--cat-mid);
-  --cat-tail: var(--cat-dark);
-  --cat-ear: var(--cat-light);
-  --cat-paw: var(--cat-light);
-  --cat-whiskers: var(--cat-light);
-  --cat-z: var(--cat-light);
+  --cat-head: var(--noctalia-primary);
+  --cat-body: var(--noctalia-primary-mid);
+  --cat-tail: var(--noctalia-primary-dark);
+  --cat-ear: var(--noctalia-primary-light);
+  --cat-paw: var(--noctalia-primary-light);
+  --cat-whiskers: var(--noctalia-primary-light);
+  --cat-z: var(--noctalia-primary-light);
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
@@ -594,7 +574,8 @@ html.grid-live body:has(#grid-canvas)::before { opacity: 0; }
   bottom: 3px;
   width: 3px;
   height: 3px;
-  box-shadow: 7px 0 0 var(--noctalia-primary-dark), 14px 0 0 var(--noctalia-primary-dark);
+  background: var(--cyan-deep);
+  box-shadow: 7px 0 0 var(--cyan-deep), 14px 0 0 var(--cyan-deep);
 }
 
 .cat-head {
@@ -632,7 +613,7 @@ html.grid-live body:has(#grid-canvas)::before { opacity: 0; }
   left: 8px;
   width: 12px;
   height: 16px;
-  background: var(--noctalia-primary-dark, var(--cyan-deep));
+  background: var(--cyan-deep);
   clip-path: polygon(0 100%, 0 0, 100% 100%);
 }
 
@@ -657,7 +638,7 @@ html.grid-live body:has(#grid-canvas)::before { opacity: 0; }
   top: 98px;
   width: 8px;
   height: 6px;
-  background: var(--cat-dark, var(--noctalia-primary-dark, var(--red)));
+  background: var(--noctalia-primary-dark, var(--red));
   clip-path: polygon(0 0, 100% 0, 50% 100%);
 }
 
