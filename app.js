@@ -24,30 +24,28 @@
     }
   }
 
-  // ── Multi-Theme System ──
-  const THEMES = ['crimson', 'matrix', 'cyberpunk', 'jade', 'abyssal', 'synthwave', 'parchment'];
+  // ── Multi-Theme System (Synchronized with Hiraeth) ──
+  const THEMES = ['kanagawa', 'miasma', 'solitude', 'gruvbox'];
   const THEME_COLORS = {
-    crimson: '#0c0406',
-    matrix: '#020b06',
-    cyberpunk: '#080911',
-    jade: '#081512',
-    abyssal: '#030a12',
-    synthwave: '#0d0614',
-    parchment: '#eae1cd'
+    kanagawa: '#1A2026',
+    miasma: '#222222',
+    solitude: '#101315',
+    gruvbox: '#282828'
   };
 
-  let currentTheme = 'crimson';
+  let currentTheme = 'kanagawa';
   try {
     const params = new URLSearchParams(window.location.search);
     const qTheme = params.get('theme');
     if (qTheme && THEMES.indexOf(qTheme) >= 0) {
       currentTheme = qTheme;
     } else {
-      currentTheme = localStorage.getItem('hiraeth_mobile_theme') || 'crimson';
-      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'crimson';
+      // Synchronized with main Hiraeth website ('theme' in localStorage)
+      currentTheme = localStorage.getItem('theme') || localStorage.getItem('hiraeth_mobile_theme') || 'kanagawa';
+      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'kanagawa';
     }
   } catch(e) {
-    currentTheme = 'crimson';
+    currentTheme = 'kanagawa';
   }
 
   const themeBtn = document.getElementById('themeBtn');
@@ -57,11 +55,14 @@
     document.documentElement.setAttribute('data-theme', theme);
     
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', THEME_COLORS[theme] || '#0c0406');
+    if (meta) meta.setAttribute('content', THEME_COLORS[theme] || '#1A2026');
 
     if (themeBtn) themeBtn.textContent = theme;
 
-    try { localStorage.setItem('hiraeth_mobile_theme', theme); } catch(e) {}
+    try {
+      localStorage.setItem('theme', theme);
+      localStorage.setItem('hiraeth_mobile_theme', theme);
+    } catch(e) {}
     document.dispatchEvent(new CustomEvent('themechange'));
   }
 

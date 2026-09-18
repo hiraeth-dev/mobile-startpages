@@ -17,9 +17,9 @@
     const cs = getComputedStyle(document.documentElement);
     const pick = (a, b, fb) => cs.getPropertyValue(a).trim() || cs.getPropertyValue(b).trim() || fb;
     return {
-      fade: pick('--canvas-fade', '--grid-fade', '#0c0406'),
-      line: pick('--canvas-line', '--grid-line', 'rgba(255, 42, 75, 0.06)'),
-      dot: pick('--canvas-dot', '--grid-dot', 'rgba(255, 42, 75, 0.28)'),
+      fade: pick('--canvas-fade', '--grid-fade', '#1A2026'),
+      line: pick('--canvas-line', '--grid-line', 'rgba(217, 167, 139, 0.08)'),
+      dot: pick('--canvas-dot', '--grid-dot', 'rgba(217, 167, 139, 0.28)'),
     };
   }
 
@@ -30,7 +30,7 @@
       const r = parseInt(str.slice(1, 3), 16), g = parseInt(str.slice(3, 5), 16), b = parseInt(str.slice(5, 7), 16);
       return { r, g, b, a: 0.28 };
     }
-    return { r: 255, g: 42, b: 75, a: 0.28 };
+    return { r: 217, g: 167, b: 139, a: 0.28 };
   }
 
   let clr = getColors();

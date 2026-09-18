@@ -19,186 +19,104 @@
   font-display: swap;
 }
 
-/* ── 1. Crimson (Default — Blood-Red Gothic) ── */
 :root,
-[data-theme="crimson"] {
-  --bg: #0c0406;
-  --bg-panel: #16080c;
-  --bg-panel-alt: #220e14;
-  --border: #3d141b;
-  --border-strong: #ff2a4b;
-  --fg: #fceeee;
-  --fg-dim: #c98e98;
-  --fg-muted: #73454e;
-  --accent: #ff2a4b;
-  --accent-bright: #ff526e;
-  --accent-soft: #f59e0b;
-  --grid-fade: #0c0406;
-  --grid-line: rgba(255, 42, 75, 0.06);
-  --grid-dot: rgba(255, 42, 75, 0.28);
-  --cat-head: #ff2a4b;
-  --cat-body: #c51d36;
-  --cat-tail: #7a1222;
-  --cat-ear: #ff526e;
-  --cat-paw: #3d141b;
-  --cat-whiskers: #fceeee;
-  --cat-z: #fceeee;
+[data-theme="kanagawa"] {
+  --bg: #1A2026;
+  --bg-panel: #20272E;
+  --bg-panel-alt: #313C47;
+  --border: #313C47;
+  --border-strong: #D9A78B;
+  --fg: #D9D1BA;
+  --fg-dim: #9E9783;
+  --fg-muted: #667858;
+  --accent: #D9A78B;
+  --accent-bright: #F2BEA0;
+  --accent-soft: #7794A6;
+  --grid-fade: #1A2026;
+  --grid-line: rgba(217, 167, 139, 0.08);
+  --grid-dot: rgba(217, 167, 139, 0.28);
+  --cat-head: #D9A78B;
+  --cat-body: #A67A61;
+  --cat-tail: #547875;
+  --cat-ear: #F2BEA0;
+  --cat-paw: #313C47;
+  --cat-whiskers: #D9D1BA;
+  --cat-z: #F2BEA0;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 2. Matrix (Cyber Green / Phosphor) ── */
-[data-theme="matrix"] {
-  --bg: #020b06;
-  --bg-panel: #06150c;
-  --bg-panel-alt: #0b2214;
-  --border: #143822;
-  --border-strong: #00ff66;
-  --fg: #e2fbe8;
-  --fg-dim: #79d793;
-  --fg-muted: #3a754d;
-  --accent: #00ff66;
-  --accent-bright: #33ff85;
-  --accent-soft: #ffcc00;
-  --grid-fade: #020b06;
-  --grid-line: rgba(0, 255, 102, 0.06);
-  --grid-dot: rgba(0, 255, 102, 0.30);
-  --cat-head: #00ff66;
-  --cat-body: #00cc52;
-  --cat-tail: #0b4a22;
-  --cat-ear: #33ff85;
-  --cat-paw: #143822;
-  --cat-whiskers: #e2fbe8;
-  --cat-z: #e2fbe8;
+[data-theme="miasma"] {
+  --bg: #222222;
+  --bg-panel: #2a2a27;
+  --bg-panel-alt: #383838;
+  --border: #43492a;
+  --border-strong: #78824b;
+  --fg: #c2c2b0;
+  --fg-dim: #8a8a7e;
+  --fg-muted: #666666;
+  --accent: #78824b;
+  --accent-bright: #d7c483;
+  --accent-soft: #c9a554;
+  --grid-fade: #222222;
+  --grid-line: rgba(120, 130, 75, 0.08);
+  --grid-dot: rgba(120, 130, 75, 0.28);
+  --cat-head: #78824b;
+  --cat-body: #5f683b;
+  --cat-tail: #383838;
+  --cat-ear: #d7c483;
+  --cat-paw: #43492a;
+  --cat-whiskers: #c2c2b0;
+  --cat-z: #d7c483;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 3. Cyberpunk (Neon Cyan × Electric Yellow) ── */
-[data-theme="cyberpunk"] {
-  --bg: #080911;
-  --bg-panel: #10121e;
-  --bg-panel-alt: #171b2d;
-  --border: #1f2740;
-  --border-strong: #00f0ff;
-  --fg: #e3ebfc;
-  --fg-dim: #8ba2cf;
-  --fg-muted: #4e5f83;
-  --accent: #00f0ff;
-  --accent-bright: #38bdf8;
-  --accent-soft: #ffe600;
-  --grid-fade: #080911;
-  --grid-line: rgba(0, 240, 255, 0.06);
-  --grid-dot: rgba(0, 240, 255, 0.28);
-  --cat-head: #00f0ff;
-  --cat-body: #00b8c4;
-  --cat-tail: #1a4252;
-  --cat-ear: #38bdf8;
-  --cat-paw: #1f2740;
-  --cat-whiskers: #e3ebfc;
-  --cat-z: #e3ebfc;
+[data-theme="solitude"] {
+  --bg: #101315;
+  --bg-panel: #1a1f22;
+  --bg-panel-alt: #232a2e;
+  --border: #2f353b;
+  --border-strong: #798186;
+  --fg: #cacccc;
+  --fg-dim: #9fa5a9;
+  --fg-muted: #5d6367;
+  --accent: #798186;
+  --accent-bright: #a8adb0;
+  --accent-soft: #c9c2b4;
+  --grid-fade: #101315;
+  --grid-line: rgba(121, 129, 134, 0.08);
+  --grid-dot: rgba(121, 129, 134, 0.28);
+  --cat-head: #798186;
+  --cat-body: #5d6367;
+  --cat-tail: #232a2e;
+  --cat-ear: #a8adb0;
+  --cat-paw: #2f353b;
+  --cat-whiskers: #cacccc;
+  --cat-z: #de6145;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
-/* ── 4. Jade (Emerald Console) ── */
-[data-theme="jade"] {
-  --bg: #081512;
-  --bg-panel: #0f251f;
-  --bg-panel-alt: #16362d;
-  --border: #1b6352;
-  --border-strong: #1e9177;
-  --fg: #a8c5b5;
-  --fg-dim: #9ab8a8;
-  --fg-muted: #567d6c;
-  --accent: #1e9177;
-  --accent-bright: #26a589;
-  --accent-soft: #f59e0b;
-  --grid-fade: #081512;
-  --grid-line: rgba(30, 145, 119, 0.06);
-  --grid-dot: rgba(30, 145, 119, 0.28);
-  --cat-head: #1e9177;
-  --cat-body: #167a63;
-  --cat-tail: #0f3d32;
-  --cat-ear: #26a589;
-  --cat-paw: #1b6352;
-  --cat-whiskers: #b9d1c2;
-  --cat-z: #b9d1c2;
-  --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-/* ── 5. Abyssal (Oceanic Azure) ── */
-[data-theme="abyssal"] {
-  --bg: #030a12;
-  --bg-panel: #071422;
-  --bg-panel-alt: #0c2035;
-  --border: #15324f;
-  --border-strong: #38bdf8;
-  --fg: #e0f2fe;
-  --fg-dim: #7ec0e8;
-  --fg-muted: #38678e;
-  --accent: #38bdf8;
-  --accent-bright: #7dd3fc;
-  --accent-soft: #34d399;
-  --grid-fade: #030a12;
-  --grid-line: rgba(56, 189, 248, 0.06);
-  --grid-dot: rgba(56, 189, 248, 0.28);
-  --cat-head: #38bdf8;
-  --cat-body: #0284c7;
-  --cat-tail: #0c3559;
-  --cat-ear: #7dd3fc;
-  --cat-paw: #15324f;
-  --cat-whiskers: #e0f2fe;
-  --cat-z: #e0f2fe;
-  --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-/* ── 6. Synthwave (Hot Rose × Sunset) ── */
-[data-theme="synthwave"] {
-  --bg: #0d0614;
-  --bg-panel: #170c24;
-  --bg-panel-alt: #241337;
-  --border: #3d1c5b;
-  --border-strong: #f43f5e;
-  --fg: #fdf2f8;
-  --fg-dim: #d1a8e2;
-  --fg-muted: #794f91;
-  --accent: #f43f5e;
-  --accent-bright: #fb7185;
-  --accent-soft: #fb923c;
-  --grid-fade: #0d0614;
-  --grid-line: rgba(244, 63, 94, 0.06);
-  --grid-dot: rgba(244, 63, 94, 0.28);
-  --cat-head: #f43f5e;
-  --cat-body: #e11d48;
-  --cat-tail: #631432;
-  --cat-ear: #fb7185;
-  --cat-paw: #3d1c5b;
-  --cat-whiskers: #fdf2f8;
-  --cat-z: #fdf2f8;
-  --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-/* ── 7. Parchment (Archival Paper) ── */
-[data-theme="parchment"] {
-  --bg: #eae1cd;
-  --bg-panel: #f7f2e7;
-  --bg-panel-alt: #fdfaf3;
-  --border: #3b2d1f;
-  --border-strong: #8b2513;
-  --fg: #1c1611;
-  --fg-dim: #5c4937;
-  --fg-muted: #8e7861;
-  --accent: #8b2513;
-  --accent-bright: #b3321d;
-  --accent-soft: #1e567a;
-  --grid-fade: #eae1cd;
-  --grid-line: rgba(59, 45, 31, 0.09);
-  --grid-dot: rgba(59, 45, 31, 0.28);
-  --cat-head: #8b2513;
-  --cat-body: #6f1d0f;
-  --cat-tail: #45130a;
-  --cat-ear: #b3321d;
-  --cat-paw: #3b2d1f;
-  --cat-whiskers: #1c1611;
-  --cat-z: #1c1611;
+[data-theme="gruvbox"] {
+  --bg: #282828;
+  --bg-panel: #32302f;
+  --bg-panel-alt: #45403d;
+  --border: #45403d;
+  --border-strong: #e78a4e;
+  --fg: #d4be98;
+  --fg-dim: #a89984;
+  --fg-muted: #7c6f64;
+  --accent: #e78a4e;
+  --accent-bright: #d8a657;
+  --accent-soft: #7daea3;
+  --grid-fade: #282828;
+  --grid-line: rgba(231, 138, 78, 0.08);
+  --grid-dot: rgba(231, 138, 78, 0.28);
+  --cat-head: #e78a4e;
+  --cat-body: #d88145;
+  --cat-tail: #45403d;
+  --cat-ear: #d8a657;
+  --cat-paw: #45403d;
+  --cat-whiskers: #d4be98;
+  --cat-z: #d8a657;
   --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
