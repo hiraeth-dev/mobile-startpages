@@ -14,42 +14,34 @@ MOBILE_CSS = os.path.join(MOBILE_DIR, "style.css")
 MOBILE_APP = os.path.join(MOBILE_DIR, "app.js")
 MOBILE_HTML = os.path.join(MOBILE_DIR, "index.html")
 
-CAT_PALETTES = {
+NOCTALIA_PALETTES = {
     "kanagawa": {
-        "cat-head": "#D9A78B",
-        "cat-body": "#A67A61",
-        "cat-tail": "#547875",
-        "cat-ear": "#F2BEA0",
-        "cat-paw": "#313C47",
-        "cat-whiskers": "#D9D1BA",
-        "cat-z": "#F2BEA0"
+        "noctalia-primary": "#d9a78b",
+        "noctalia-primary-mid": "#cf906c",
+        "noctalia-primary-dark": "#bf6d3f",
+        "noctalia-primary-light": "#ebd0c1",
+        "noctalia-surface": "#1a2026"
     },
     "miasma": {
-        "cat-head": "#78824b",
-        "cat-body": "#5f683b",
-        "cat-tail": "#383838",
-        "cat-ear": "#d7c483",
-        "cat-paw": "#43492a",
-        "cat-whiskers": "#c2c2b0",
-        "cat-z": "#d7c483"
+        "noctalia-primary": "#78824b",
+        "noctalia-primary-mid": "#60683c",
+        "noctalia-primary-dark": "#3c4126",
+        "noctalia-primary-light": "#9eaa6b",
+        "noctalia-surface": "#222222"
     },
     "solitude": {
-        "cat-head": "#798186",
-        "cat-body": "#5d6367",
-        "cat-tail": "#232a2e",
-        "cat-ear": "#a8adb0",
-        "cat-paw": "#2f353b",
-        "cat-whiskers": "#cacccc",
-        "cat-z": "#de6145"
+        "noctalia-primary": "#798186",
+        "noctalia-primary-mid": "#666c71",
+        "noctalia-primary-dark": "#494d50",
+        "noctalia-primary-light": "#9fa4a8",
+        "noctalia-surface": "#101315"
     },
     "gruvbox": {
-        "cat-head": "#e78a4e",
-        "cat-body": "#d88145",
-        "cat-tail": "#45403d",
-        "cat-ear": "#d8a657",
-        "cat-paw": "#45403d",
-        "cat-whiskers": "#d4be98",
-        "cat-z": "#d8a657"
+        "noctalia-primary": "#e78a4e",
+        "noctalia-primary-mid": "#e2722a",
+        "noctalia-primary-dark": "#b65719",
+        "noctalia-primary-light": "#f0b48d",
+        "noctalia-surface": "#282828"
     }
 }
 
@@ -88,14 +80,12 @@ def sync():
     css_blocks = []
     for i, t in enumerate(valid_themes):
         v = themes[t]
-        cat = CAT_PALETTES.get(t, {
-            "cat-head": v.get("--accent", "#ffffff"),
-            "cat-body": v.get("--accent-dim", "#cccccc"),
-            "cat-tail": v.get("--bg-panel-alt", "#333333"),
-            "cat-ear": v.get("--accent-bright", "#ffffff"),
-            "cat-paw": v.get("--border", "#555555"),
-            "cat-whiskers": v.get("--fg", "#ffffff"),
-            "cat-z": v.get("--accent-bright", "#ffffff")
+        noc = NOCTALIA_PALETTES.get(t, {
+            "noctalia-primary": v.get("--accent", "#d9a78b"),
+            "noctalia-primary-mid": v.get("--accent-soft", "#cf906c"),
+            "noctalia-primary-dark": v.get("--border-strong", "#bf6d3f"),
+            "noctalia-primary-light": v.get("--accent-bright", "#ebd0c1"),
+            "noctalia-surface": v.get("--bg", "#1a2026")
         })
 
         selector = f':root,\n[data-theme="{t}"]' if i == 0 else f'[data-theme="{t}"]'
@@ -114,8 +104,15 @@ def sync():
         lines.append(f"  --grid-fade: {v.get('--grid-fade', v.get('--bg', '#1A2026'))};")
         lines.append(f"  --grid-line: {v.get('--grid-line', 'rgba(217, 167, 139, 0.08)')};")
         lines.append(f"  --grid-dot: {v.get('--grid-dot', 'rgba(217, 167, 139, 0.28)')};")
-        for ck, cv in cat.items():
-            lines.append(f"  --{ck}: {cv};")
+        for nk, nv in noc.items():
+            lines.append(f"  --{nk}: {nv};")
+        lines.append("  --cat-head: var(--noctalia-primary);")
+        lines.append("  --cat-body: var(--noctalia-primary-mid);")
+        lines.append("  --cat-tail: var(--noctalia-primary-dark);")
+        lines.append("  --cat-ear: var(--noctalia-primary-light);")
+        lines.append("  --cat-paw: var(--noctalia-primary-light);")
+        lines.append("  --cat-whiskers: var(--noctalia-primary-light);")
+        lines.append("  --cat-z: var(--noctalia-primary-light);")
         lines.append("  --font-mono: 'Maple Mono NF', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;")
         lines.append("}")
         css_blocks.append("\n".join(lines))
