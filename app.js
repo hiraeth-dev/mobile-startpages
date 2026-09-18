@@ -25,15 +25,12 @@
   }
 
   // ── Multi-Theme System (Synchronized with Hiraeth) ──
-  const THEMES = ['kanagawa', 'miasma', 'solitude', 'gruvbox', 'dusky', 'hilltop', 'evergreen', 'cyberpunk'];
+  const THEMES = ['kanagawa', 'solitude', 'gruvbox', 'dusky', 'cyberpunk'];
   const THEME_COLORS = {
     kanagawa: '#1A2026',
-    miasma: '#222222',
     solitude: '#101315',
     gruvbox: '#282828',
     dusky: '#13111a',
-    hilltop: '#27150D',
-    evergreen: '#101913',
     cyberpunk: '#0a0d14'
   };
 

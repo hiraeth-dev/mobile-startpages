@@ -22,13 +22,6 @@ NOCTALIA_PALETTES = {
         "noctalia-primary-light": "#ebd0c1",
         "noctalia-surface": "#1a2026"
     },
-    "miasma": {
-        "noctalia-primary": "#78824b",
-        "noctalia-primary-mid": "#60683c",
-        "noctalia-primary-dark": "#3c4126",
-        "noctalia-primary-light": "#9eaa6b",
-        "noctalia-surface": "#222222"
-    },
     "solitude": {
         "noctalia-primary": "#798186",
         "noctalia-primary-mid": "#666c71",
@@ -67,7 +60,7 @@ def sync():
                 k, v = line.split(":", 1)
                 vars_dict[k.strip()] = v.rstrip(";").strip()
 
-    theme_order = ["kanagawa", "miasma", "solitude", "gruvbox"]
+    theme_order = ["kanagawa", "solitude", "gruvbox", "dusky", "cyberpunk"]
     valid_themes = [t for t in theme_order if t in themes]
     for t in themes:
         if t not in valid_themes:
