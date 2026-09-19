@@ -16,11 +16,11 @@ MOBILE_HTML = os.path.join(MOBILE_DIR, "index.html")
 
 NOCTALIA_PALETTES = {
     "kanagawa": {
-        "noctalia-primary": "#d9a78b",
-        "noctalia-primary-mid": "#cf906c",
-        "noctalia-primary-dark": "#bf6d3f",
-        "noctalia-primary-light": "#ebd0c1",
-        "noctalia-surface": "#1a2026"
+        "noctalia-primary": "#c4b28a",
+        "noctalia-primary-mid": "#9b8d72",
+        "noctalia-primary-dark": "#696154",
+        "noctalia-primary-light": "#cec19d",
+        "noctalia-surface": "#1F1F28"
     },
     "solitude": {
         "noctalia-primary": "#798186",
@@ -43,12 +43,26 @@ NOCTALIA_PALETTES = {
         "noctalia-primary-light": "#dc97ad",
         "noctalia-surface": "#13111a"
     },
-    "cyberpunk": {
-        "noctalia-primary": "#C4A82E",
-        "noctalia-primary-mid": "#968128",
-        "noctalia-primary-dark": "#675a21",
-        "noctalia-primary-light": "#cdc18c",
-        "noctalia-surface": "#0a0d14"
+    "tokyo": {
+        "noctalia-primary": "#7aa2f7",
+        "noctalia-primary-mid": "#565f89",
+        "noctalia-primary-dark": "#3b4261",
+        "noctalia-primary-light": "#7dcfff",
+        "noctalia-surface": "#1a1b26"
+    },
+    "rosepine": {
+        "noctalia-primary": "#eb6f92",
+        "noctalia-primary-mid": "#ac5571",
+        "noctalia-primary-dark": "#773f55",
+        "noctalia-primary-light": "#ebbcba",
+        "noctalia-surface": "#191724"
+    },
+    "nord": {
+        "noctalia-primary": "#88c0d0",
+        "noctalia-primary-mid": "#5e81ac",
+        "noctalia-primary-dark": "#4c566a",
+        "noctalia-primary-light": "#8fbcbb",
+        "noctalia-surface": "#2e3440"
     }
 }
 
@@ -74,7 +88,7 @@ def sync():
                 k, v = line.split(":", 1)
                 vars_dict[k.strip()] = v.rstrip(";").strip()
 
-    theme_order = ["kanagawa", "solitude", "gruvbox", "dusky", "cyberpunk"]
+    theme_order = ["kanagawa", "dusky", "cyberpunk", "tokyo", "rosepine", "nord"]
     valid_themes = [t for t in theme_order if t in themes]
     for t in themes:
         if t not in valid_themes:
