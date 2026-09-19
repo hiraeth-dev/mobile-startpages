@@ -22,20 +22,6 @@ NOCTALIA_PALETTES = {
         "noctalia-primary-light": "#cec19d",
         "noctalia-surface": "#1F1F28"
     },
-    "solitude": {
-        "noctalia-primary": "#798186",
-        "noctalia-primary-mid": "#666c71",
-        "noctalia-primary-dark": "#494d50",
-        "noctalia-primary-light": "#9fa4a8",
-        "noctalia-surface": "#101315"
-    },
-    "gruvbox": {
-        "noctalia-primary": "#e78a4e",
-        "noctalia-primary-mid": "#e2722a",
-        "noctalia-primary-dark": "#b65719",
-        "noctalia-primary-light": "#f0b48d",
-        "noctalia-surface": "#282828"
-    },
     "dusky": {
         "noctalia-primary": "#d85d7b",
         "noctalia-primary-mid": "#a74a63",
@@ -50,12 +36,12 @@ NOCTALIA_PALETTES = {
         "noctalia-primary-light": "#7dcfff",
         "noctalia-surface": "#1a1b26"
     },
-    "rosepine": {
-        "noctalia-primary": "#eb6f92",
-        "noctalia-primary-mid": "#ac5571",
-        "noctalia-primary-dark": "#773f55",
-        "noctalia-primary-light": "#ebbcba",
-        "noctalia-surface": "#191724"
+    "amoled": {
+        "noctalia-primary": "#4ade80",
+        "noctalia-primary-mid": "#22c55e",
+        "noctalia-primary-dark": "#15803d",
+        "noctalia-primary-light": "#86efac",
+        "noctalia-surface": "#000000"
     },
     "nord": {
         "noctalia-primary": "#88c0d0",
@@ -88,7 +74,7 @@ def sync():
                 k, v = line.split(":", 1)
                 vars_dict[k.strip()] = v.rstrip(";").strip()
 
-    theme_order = ["kanagawa", "dusky", "cyberpunk", "tokyo", "rosepine", "nord"]
+    theme_order = ["kanagawa", "dusky", "cyberpunk", "tokyo", "amoled", "nord"]
     valid_themes = [t for t in theme_order if t in themes]
     for t in themes:
         if t not in valid_themes:

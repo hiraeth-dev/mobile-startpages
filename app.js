@@ -25,13 +25,13 @@
   }
 
   // ── Multi-Theme System (Synchronized with Hiraeth) ──
-  const THEMES = ['kanagawa', 'dusky', 'cyberpunk', 'tokyo', 'rosepine', 'nord'];
+  const THEMES = ['kanagawa', 'dusky', 'cyberpunk', 'tokyo', 'amoled', 'nord'];
   const THEME_COLORS = {
     kanagawa: '#1F1F28',
     dusky: '#13111a',
     cyberpunk: '#0a0d14',
     tokyo: '#1a1b26',
-    rosepine: '#191724',
+    amoled: '#000000',
     nord: '#2e3440'
   };
 
