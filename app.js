@@ -25,14 +25,16 @@
   }
 
   // ── Multi-Theme System (Synchronized with Hiraeth) ──
-  const THEMES = ['kanagawa', 'dusky', 'cyberpunk', 'tokyo', 'amoled', 'nord'];
+  const THEMES = ['kanagawa', 'dusky', 'cyberpunk', 'nord', 'emerald', 'crimson', 'sakura', 'catppuccin'];
   const THEME_COLORS = {
     kanagawa: '#1F1F28',
     dusky: '#13111a',
     cyberpunk: '#0a0d14',
-    tokyo: '#1a1b26',
-    amoled: '#000000',
-    nord: '#2e3440'
+    nord: '#2e3440',
+    emerald: '#000000',
+    crimson: '#000000',
+    sakura: '#000000',
+    catppuccin: '#1e1e2e'
   };
 
   let currentTheme = 'kanagawa';
