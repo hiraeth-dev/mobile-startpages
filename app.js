@@ -34,7 +34,7 @@
     tungsten: '#0A0A0C'
   };
 
-  let currentTheme = 'amber';
+  let currentTheme = 'tungsten';
   try {
     const params = new URLSearchParams(window.location.search);
     const qTheme = params.get('theme');
@@ -42,11 +42,11 @@
       currentTheme = qTheme;
     } else {
       // Synchronized with main Hiraeth website ('theme' in localStorage)
-      currentTheme = localStorage.getItem('theme') || localStorage.getItem('hiraeth_mobile_theme') || 'amber';
-      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'amber';
+      currentTheme = localStorage.getItem('theme') || localStorage.getItem('hiraeth_mobile_theme') || 'tungsten';
+      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'tungsten';
     }
   } catch(e) {
-    currentTheme = 'amber';
+    currentTheme = 'tungsten';
   }
 
   const themeBtn = document.getElementById('themeBtn');
