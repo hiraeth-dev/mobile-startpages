@@ -15,54 +15,40 @@ MOBILE_APP = os.path.join(MOBILE_DIR, "app.js")
 MOBILE_HTML = os.path.join(MOBILE_DIR, "index.html")
 
 NOCTALIA_PALETTES = {
-    "kanagawa": {
-        "noctalia-primary": "#c4b28a",
-        "noctalia-primary-mid": "#9b8d72",
-        "noctalia-primary-dark": "#696154",
-        "noctalia-primary-light": "#cec19d",
-        "noctalia-surface": "#1F1F28"
+    "amber": {
+        "noctalia-primary": "#FFB454",
+        "noctalia-primary-mid": "#9A5A1C",
+        "noctalia-primary-dark": "#5C3410",
+        "noctalia-primary-light": "#FFD9A0",
+        "noctalia-surface": "#0B0906"
     },
-    "dusky": {
-        "noctalia-primary": "#d85d7b",
-        "noctalia-primary-mid": "#a74a63",
-        "noctalia-primary-dark": "#76374a",
-        "noctalia-primary-light": "#dc97ad",
-        "noctalia-surface": "#13111a"
+    "mallow": {
+        "noctalia-primary": "#C89BFF",
+        "noctalia-primary-mid": "#8360C2",
+        "noctalia-primary-dark": "#4A3670",
+        "noctalia-primary-light": "#E2B8FF",
+        "noctalia-surface": "#0A0712"
     },
-    "catppuccin": {
-        "noctalia-primary": "#cba6f7",
-        "noctalia-primary-mid": "#977dbb",
-        "noctalia-primary-dark": "#6c5b88",
-        "noctalia-primary-light": "#f5c2e7",
-        "noctalia-surface": "#1e1e2e"
+    "slick": {
+        "noctalia-primary": "#5EEAD4",
+        "noctalia-primary-mid": "#1E9E8A",
+        "noctalia-primary-dark": "#0E4A44",
+        "noctalia-primary-light": "#A7F3EA",
+        "noctalia-surface": "#04080B"
     },
-    "emerald": {
-        "noctalia-primary": "#4ade80",
-        "noctalia-primary-mid": "#22c55e",
-        "noctalia-primary-dark": "#15803d",
-        "noctalia-primary-light": "#86efac",
-        "noctalia-surface": "#000000"
+    "safelight": {
+        "noctalia-primary": "#FF4D6A",
+        "noctalia-primary-mid": "#A32444",
+        "noctalia-primary-dark": "#5C1A28",
+        "noctalia-primary-light": "#FFB3C0",
+        "noctalia-surface": "#0B0406"
     },
-    "nord": {
-        "noctalia-primary": "#88c0d0",
-        "noctalia-primary-mid": "#5e81ac",
-        "noctalia-primary-dark": "#4c566a",
-        "noctalia-primary-light": "#8fbcbb",
-        "noctalia-surface": "#2e3440"
-    },
-    "crimson": {
-        "noctalia-primary": "#f43f5e",
-        "noctalia-primary-mid": "#e11d48",
-        "noctalia-primary-dark": "#881337",
-        "noctalia-primary-light": "#fda4af",
-        "noctalia-surface": "#000000"
-    },
-    "sakura": {
-        "noctalia-primary": "#f9a8d4",
-        "noctalia-primary-mid": "#ec4899",
-        "noctalia-primary-dark": "#9d174d",
-        "noctalia-primary-light": "#fbcfe8",
-        "noctalia-surface": "#000000"
+    "tungsten": {
+        "noctalia-primary": "#9FB0C4",
+        "noctalia-primary-mid": "#6B7280",
+        "noctalia-primary-dark": "#343A42",
+        "noctalia-primary-light": "#F2F5FA",
+        "noctalia-surface": "#0A0A0C"
     }
 }
 
@@ -88,7 +74,7 @@ def sync():
                 k, v = line.split(":", 1)
                 vars_dict[k.strip()] = v.rstrip(";").strip()
 
-    theme_order = ["kanagawa", "dusky", "cyberpunk", "nord", "emerald", "crimson", "sakura", "catppuccin"]
+    theme_order = ["amber", "mallow", "slick", "safelight", "tungsten"]
     valid_themes = [t for t in theme_order if t in themes]
     for t in themes:
         if t not in valid_themes:

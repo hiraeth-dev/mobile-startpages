@@ -25,19 +25,16 @@
   }
 
   // ── Multi-Theme System (Synchronized with Hiraeth) ──
-  const THEMES = ['kanagawa', 'dusky', 'cyberpunk', 'nord', 'emerald', 'crimson', 'sakura', 'catppuccin'];
+  const THEMES = ['amber', 'mallow', 'slick', 'safelight', 'tungsten'];
   const THEME_COLORS = {
-    kanagawa: '#1F1F28',
-    dusky: '#13111a',
-    cyberpunk: '#0a0d14',
-    nord: '#2e3440',
-    emerald: '#000000',
-    crimson: '#000000',
-    sakura: '#000000',
-    catppuccin: '#1e1e2e'
+    amber: '#0B0906',
+    mallow: '#0A0712',
+    slick: '#04080B',
+    safelight: '#0B0406',
+    tungsten: '#0A0A0C'
   };
 
-  let currentTheme = 'kanagawa';
+  let currentTheme = 'amber';
   try {
     const params = new URLSearchParams(window.location.search);
     const qTheme = params.get('theme');
@@ -45,11 +42,11 @@
       currentTheme = qTheme;
     } else {
       // Synchronized with main Hiraeth website ('theme' in localStorage)
-      currentTheme = localStorage.getItem('theme') || localStorage.getItem('hiraeth_mobile_theme') || 'kanagawa';
-      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'kanagawa';
+      currentTheme = localStorage.getItem('theme') || localStorage.getItem('hiraeth_mobile_theme') || 'amber';
+      if (THEMES.indexOf(currentTheme) < 0) currentTheme = 'amber';
     }
   } catch(e) {
-    currentTheme = 'kanagawa';
+    currentTheme = 'amber';
   }
 
   const themeBtn = document.getElementById('themeBtn');
