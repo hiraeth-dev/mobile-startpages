@@ -99,8 +99,14 @@ def sync():
         lines.append(f"  --bg: {v.get('--bg', '#1A2026')};")
         lines.append(f"  --bg-panel: {v.get('--bg-panel', '#20272E')};")
         lines.append(f"  --bg-panel-alt: {v.get('--bg-panel-alt', '#313C47')};")
-        lines.append(f"  --border: {v.get('--border', '#313C47')};")
-        lines.append(f"  --border-strong: {v.get('--border-strong', '#D9A78B')};")
+        lines.append(f"  --border: {v.get('--border', 'var(--line)')};")
+        lines.append(f"  --border-strong: {v.get('--border-strong', 'var(--line-hi)')};")
+        lines.append(f"  --line: {v.get('--line', 'rgba(255, 255, 255, 0.15)')};")
+        lines.append(f"  --line-hi: {v.get('--line-hi', 'rgba(255, 255, 255, 0.40)')};")
+        lines.append(f"  --glass: {v.get('--glass', 'rgba(0, 0, 0, 0.40)')};")
+        lines.append(f"  --glass-hi: {v.get('--glass-hi', 'rgba(255, 255, 255, 0.50)')};")
+        lines.append(f"  --sheen: {v.get('--sheen', 'rgba(255, 255, 255, 0.08)')};")
+        lines.append(f"  --sat: {v.get('--sat', '155%')};")
         lines.append(f"  --fg: {v.get('--fg', '#D9D1BA')};")
         lines.append(f"  --fg-dim: {v.get('--fg-dim', '#9E9783')};")
         lines.append(f"  --fg-muted: {v.get('--fg-muted', '#667858')};")
@@ -148,7 +154,18 @@ def sync():
         lines.append("}")
         css_blocks.append("\n".join(lines))
 
-    new_themes_css = "\n\n".join(css_blocks)
+    glass_tokens = """/* ── Glass Tokens: auto-derived from active theme ── */
+:root {
+  --glass-bg: color-mix(in srgb, var(--bg-panel) 24%, transparent);
+  --glass-bg-hover: color-mix(in srgb, var(--bg-panel) 38%, transparent);
+  --glass-bg-strong: color-mix(in srgb, var(--bg-panel) 82%, transparent);
+  --glass-blur: 16px;
+  --glass-hi: color-mix(in srgb, var(--fg) 20%, transparent);
+  --glass-shadow: 0 4px 20px rgba(0, 0, 0, 0.45), inset 0 1px 0 var(--glass-hi);
+  --glass-shadow-hover: 0 8px 32px rgba(0, 0, 0, 0.60), 0 0 16px color-mix(in srgb, var(--accent) 30%, transparent), inset 0 1px 0 var(--glass-hi);
+}"""
+
+    new_themes_css = "\n\n".join(css_blocks) + "\n\n" + glass_tokens
 
     # Replace in mobile style.css
     with open(MOBILE_CSS, "r", encoding="utf-8") as f:

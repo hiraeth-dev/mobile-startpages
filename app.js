@@ -225,4 +225,22 @@
       window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(raw);
     });
   }
+
+  // ── Touch & Cursor Spotlight Sheen (matching hiraeth spotlight) ──
+  if (!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches)) {
+    const SPOT_SEL = '.signal-panel, .shortcut, .search-form, .theme-btn, .brand-prompt';
+    function attachSpotlight(el) {
+      el.classList.add('spot');
+      const updateCoords = (clientX, clientY) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (clientX - r.left) + 'px');
+        el.style.setProperty('--my', (clientY - r.top) + 'px');
+      };
+      el.addEventListener('pointermove', (e) => updateCoords(e.clientX, e.clientY));
+      el.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches[0]) updateCoords(e.touches[0].clientX, e.touches[0].clientY);
+      }, { passive: true });
+    }
+    document.querySelectorAll(SPOT_SEL).forEach(attachSpotlight);
+  }
 })();
