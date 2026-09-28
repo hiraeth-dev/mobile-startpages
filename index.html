@@ -13,19 +13,50 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="format-detection" content="telephone=no">
 
+  <script>(function(){var t;try{var p=new URLSearchParams(window.location.search).get('theme');t=p||localStorage.getItem('theme')}catch(e){}var v=['amber','mallow','slick','safelight','tungsten'];var def='safelight';if(v.indexOf(t)<0)t=def;document.documentElement.setAttribute('data-theme',t);var f;try{var pf=new URLSearchParams(window.location.search).get('font');f=pf||localStorage.getItem('font')}catch(e){}var fv=['maple','iosevka','space'];if(fv.indexOf(f)<0)f='space';document.documentElement.setAttribute('data-font',f);})();</script>
+  <link rel="preload" href="fonts/SpaceMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/SpaceMono-Bold.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/MapleMono-NF-Regular.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/MapleMono-NF-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=13">
 </head>
 <body>
   <!-- Interactive Spring Dot Grid Canvas -->
   <canvas id="grid-canvas"></canvas>
 
   <main class="container">
-    <!-- Top Header -->
+    <!-- Top Header matching hiraeth topbar -->
     <header class="brand">
-      <div class="brand-prompt"><span class="sym">λ</span>hiraeth.dev</div>
-      <button type="button" class="theme-btn" id="themeBtn" title="Switch Theme">safelight</button>
+      <a href="https://hiraeth-dev.github.io" class="logo" title="hiraeth">
+        <div class="site-cat" aria-hidden="true">
+          <div class="cat-logo">
+            <i class="cat-tail"></i>
+            <i class="cat-body"></i>
+            <i class="cat-paw cat-paw-one"></i>
+            <i class="cat-paw cat-paw-two"></i>
+            <i class="cat-head"></i>
+            <i class="cat-ear cat-ear-left"></i>
+            <i class="cat-ear cat-ear-right"></i>
+            <i class="cat-face"></i>
+            <i class="cat-nose"></i>
+            <i class="cat-whiskers"></i>
+          </div>
+        </div>
+        <span class="logo-text"><span class="logo-sym">~</span>hiraeth</span>
+      </a>
+
+      <div class="nav-controls">
+        <div class="theme-pick">
+          <button class="theme-btn" id="fontBtn" type="button" aria-label="Font" title="Font">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6V4h14v2M12 4v16M9 20h6"/></svg>
+          </button>
+        </div>
+        <div class="theme-pick">
+          <button class="theme-btn" id="themeBtn" type="button" aria-label="Theme" title="Theme">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" stroke="none"/></svg>
+          </button>
+        </div>
+      </div>
     </header>
 
     <!-- Main Centered Content -->

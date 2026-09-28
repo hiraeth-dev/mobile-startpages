@@ -58,7 +58,10 @@
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', THEME_COLORS[theme] || '#1A2026');
 
-    if (themeBtn) themeBtn.textContent = theme;
+    if (themeBtn) {
+      themeBtn.setAttribute('aria-label', 'Theme: ' + theme + ' (click to switch)');
+      themeBtn.setAttribute('title', 'Theme: ' + theme + ' (click to switch)');
+    }
 
     try {
       localStorage.setItem('theme', theme);
@@ -76,6 +79,50 @@
     });
   }
   applyTheme(currentTheme);
+
+  // ── Multi-Font System (Synchronized with Hiraeth) ──
+  const FONTS = ['space', 'maple', 'iosevka'];
+  const FONT_LABELS = { space: 'Space Mono', maple: 'Maple Mono', iosevka: 'Iosevka' };
+  let currentFont = 'space';
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const qFont = params.get('font');
+    if (qFont && FONTS.indexOf(qFont) >= 0) {
+      currentFont = qFont;
+    } else {
+      currentFont = localStorage.getItem('font') || 'space';
+      if (FONTS.indexOf(currentFont) < 0) currentFont = 'space';
+    }
+  } catch(e) {
+    currentFont = 'space';
+  }
+
+  const fontBtn = document.getElementById('fontBtn');
+
+  function applyFont(font) {
+    currentFont = font;
+    document.documentElement.setAttribute('data-font', font);
+
+    if (fontBtn) {
+      fontBtn.setAttribute('aria-label', 'Font: ' + FONT_LABELS[font] + ' (click to switch)');
+      fontBtn.setAttribute('title', 'Font: ' + FONT_LABELS[font] + ' (click to switch)');
+    }
+
+    try {
+      localStorage.setItem('font', font);
+    } catch(e) {}
+    document.dispatchEvent(new CustomEvent('fontchange'));
+  }
+
+  if (fontBtn) {
+    fontBtn.addEventListener('click', () => {
+      haptic(15);
+      const idx = FONTS.indexOf(currentFont);
+      const nextFont = FONTS[(idx + 1) % FONTS.length];
+      applyFont(nextFont);
+    });
+  }
+  applyFont(currentFont);
 
   // ── Sleeping Cat Petting ──
   const catLogo = document.getElementById('catLogo');
