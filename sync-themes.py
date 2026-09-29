@@ -29,12 +29,12 @@ NOCTALIA_PALETTES = {
         "noctalia-primary-light": "#E2B8FF",
         "noctalia-surface": "#0A0712"
     },
-    "slick": {
-        "noctalia-primary": "#5EEAD4",
-        "noctalia-primary-mid": "#1E9E8A",
-        "noctalia-primary-dark": "#0E4A44",
-        "noctalia-primary-light": "#A7F3EA",
-        "noctalia-surface": "#04080B"
+    "gruvbox-material": {
+        "noctalia-primary": "#a9b665",
+        "noctalia-primary-mid": "#89b482",
+        "noctalia-primary-dark": "#45403d",
+        "noctalia-primary-light": "#ddc7a1",
+        "noctalia-surface": "#282828"
     },
     "safelight": {
         "noctalia-primary": "#FF4D6A",
@@ -74,7 +74,7 @@ def sync():
                 k, v = line.split(":", 1)
                 vars_dict[k.strip()] = v.rstrip(";").strip()
 
-    theme_order = ["amber", "mallow", "slick", "safelight", "tungsten"]
+    theme_order = ["amber", "mallow", "gruvbox-material", "safelight", "tungsten"]
     valid_themes = [t for t in theme_order if t in themes]
     for t in themes:
         if t not in valid_themes:
